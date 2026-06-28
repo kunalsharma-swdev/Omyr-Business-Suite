@@ -66,36 +66,24 @@ export default function Home() {
           <p className="text-center text-muted-foreground font-medium mb-12 uppercase tracking-widest text-sm">Perfect for every occasion</p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto">
             {[
-              "Diwali",
-              "Independence Day",
-              "Janmashtami",
-              "Christmas",
-              "School Events",
-              "Annual Day",
-              "Navratri",
-              "Cultural Fest",
-            ].map((label, i) => {
-              const colors = [
-                "hover:bg-[#E8177A] hover:border-[#E8177A]",
-                "hover:bg-[#7C3AED] hover:border-[#7C3AED]",
-                "hover:bg-[#2563EB] hover:border-[#2563EB]",
-                "hover:bg-[#E8177A] hover:border-[#E8177A]",
-                "hover:bg-[#7C3AED] hover:border-[#7C3AED]",
-                "hover:bg-[#2563EB] hover:border-[#2563EB]",
-                "hover:bg-[#E8177A] hover:border-[#E8177A]",
-                "hover:bg-[#7C3AED] hover:border-[#7C3AED]",
-              ];
-              return (
-                <div
-                  key={label}
-                  className={`group border-2 border-border rounded-xl px-4 py-4 text-center cursor-default transition-all duration-300 ${colors[i]} hover:text-white hover:-translate-y-1 hover:shadow-lg`}
-                >
-                  <span className="text-sm font-semibold text-foreground group-hover:text-white transition-colors duration-300 leading-tight">
-                    {label}
-                  </span>
-                </div>
-              );
-            })}
+              { label: "Diwali",          bg: "bg-pink-50",   border: "border-pink-200",   hover: "hover:bg-[#E8177A] hover:border-[#E8177A]",  text: "text-pink-700"   },
+              { label: "Independence Day", bg: "bg-blue-50",   border: "border-blue-200",   hover: "hover:bg-[#2563EB] hover:border-[#2563EB]",   text: "text-blue-700"   },
+              { label: "Janmashtami",     bg: "bg-violet-50", border: "border-violet-200", hover: "hover:bg-[#7C3AED] hover:border-[#7C3AED]",   text: "text-violet-700" },
+              { label: "Christmas",       bg: "bg-rose-50",   border: "border-rose-200",   hover: "hover:bg-[#E8177A] hover:border-[#E8177A]",   text: "text-rose-700"   },
+              { label: "School Events",   bg: "bg-indigo-50", border: "border-indigo-200", hover: "hover:bg-[#2563EB] hover:border-[#2563EB]",   text: "text-indigo-700" },
+              { label: "Annual Day",      bg: "bg-fuchsia-50",border: "border-fuchsia-200",hover: "hover:bg-[#7C3AED] hover:border-[#7C3AED]",   text: "text-fuchsia-700"},
+              { label: "Navratri",        bg: "bg-amber-50",  border: "border-amber-200",  hover: "hover:bg-[#E8177A] hover:border-[#E8177A]",   text: "text-amber-700"  },
+              { label: "Cultural Fest",   bg: "bg-purple-50", border: "border-purple-200", hover: "hover:bg-[#7C3AED] hover:border-[#7C3AED]",   text: "text-purple-700" },
+            ].map(({ label, bg, border, hover, text }) => (
+              <div
+                key={label}
+                className={`group border-2 ${border} ${bg} ${hover} rounded-xl px-4 py-5 text-center cursor-default transition-all duration-300 hover:text-white hover:-translate-y-1 hover:shadow-lg`}
+              >
+                <span className={`text-sm font-semibold ${text} group-hover:text-white transition-colors duration-300 leading-tight`}>
+                  {label}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
