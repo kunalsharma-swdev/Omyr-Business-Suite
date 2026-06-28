@@ -67,8 +67,10 @@ export default function Home() {
             </a>
           </div>
 
-          <p className="text-white/18 text-[10px] tracking-[0.35em] uppercase mt-14 animate-in fade-in duration-700 delay-700">
-            All products available for rent only
+          <p className="mt-14 animate-in fade-in duration-700 delay-700">
+            <span className="inline-flex items-center gap-2 border border-primary/40 text-primary/80 text-[10px] font-sans tracking-[0.3em] uppercase px-5 py-2">
+              All products available for rent only
+            </span>
           </p>
         </div>
 
@@ -153,18 +155,18 @@ export default function Home() {
       </section>
 
       {/* ── How It Works ─────────────────────────────────────── */}
-      <section className="py-28 bg-white border-t border-border">
+      <section className="py-28 bg-[#09000f]">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-20">
-            <p className="text-[10px] text-muted-foreground/40 font-sans tracking-[0.4em] uppercase mb-4">
+            <p className="text-[10px] text-primary/60 font-sans tracking-[0.4em] uppercase mb-4">
               How It Works
             </p>
-            <h2 className="text-5xl md:text-6xl font-serif font-light text-foreground">
+            <h2 className="text-5xl md:text-6xl font-serif font-light text-white">
               Simple Rental Process
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 border-t border-border">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
             {[
               {
                 num: "01",
@@ -181,20 +183,19 @@ export default function Home() {
                 title: "Rent & Celebrate",
                 desc: "Pick up your clean, pressed costume and make every moment unforgettable.",
               },
-            ].map(({ num, title, desc }, i) => (
+            ].map(({ num, title, desc }) => (
               <div
                 key={num}
-                className={`p-10 group hover:bg-[#fafafa] transition-colors duration-300 ${
-                  i < 2 ? "md:border-r border-border" : ""
-                }`}
+                className="p-10 border border-white/8 group hover:border-primary/50 transition-all duration-500 relative overflow-hidden"
               >
-                <p className="text-6xl font-serif font-light text-muted-foreground/10 mb-8 group-hover:text-primary/15 transition-colors duration-500">
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <p className="text-7xl font-serif font-light text-primary/20 mb-8 group-hover:text-primary/35 transition-colors duration-500">
                   {num}
                 </p>
-                <h3 className="text-2xl md:text-3xl font-serif font-light text-foreground mb-4">
+                <h3 className="text-2xl md:text-3xl font-serif font-light text-white mb-4">
                   {title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed font-sans">
+                <p className="text-white/40 text-sm leading-relaxed font-sans">
                   {desc}
                 </p>
               </div>
