@@ -54,7 +54,7 @@ export function useProducts(category?: string, page: number = 1, pageSize: numbe
         .select('*', { count: 'exact' });
 
       if (category) {
-        query = query.ilike('category', category);
+        query = query.ilike('category', category.trim());
       }
 
       const from = (page - 1) * pageSize;
