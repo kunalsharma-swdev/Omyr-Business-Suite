@@ -69,9 +69,6 @@ export default function Home() {
               { label: "Diwali", slug: "diwali" },
               { label: "Independence Day", slug: "independence_day" },
               { label: "Janmashtami", slug: "janmashtami" },
-              { label: "Christmas", slug: "christmas" },
-              { label: "School Events", slug: "school_events" },
-              { label: "Annual Functions", slug: "annual_functions" },
             ].map(({ label, slug }) => (
               <Link key={slug} href={`/catalogue/${slug}`}>
                 <span className="px-6 py-3 bg-background rounded-full text-foreground font-semibold border border-border shadow-sm flex items-center gap-2 cursor-pointer hover:border-primary hover:text-primary hover:shadow-md transition-all duration-200">
