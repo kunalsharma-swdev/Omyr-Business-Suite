@@ -82,9 +82,10 @@ export function useProduct(id: string) {
         .from('products')
         .select('*')
         .eq('id', id)
-        .single();
+        .maybeSingle();
         
       if (error) throw error;
+      if (!data) throw new Error('Product not found');
       return data as Product;
     },
     enabled: !!id

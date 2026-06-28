@@ -52,13 +52,14 @@ export function Footer() {
 
           {/* Occasions */}
           <div>
-            <h3 className="font-serif font-bold text-xl mb-6 text-white">Occasions</h3>
+            <h3 className="font-serif font-bold text-xl mb-6 text-white">Occasions We Serve</h3>
             <ul className="space-y-3">
-              <li className="text-secondary-foreground/80">School Functions</li>
-              <li className="text-secondary-foreground/80">Diwali & Festivals</li>
-              <li className="text-secondary-foreground/80">Janmashtami Special</li>
-              <li className="text-secondary-foreground/80">Independence Day</li>
-              <li className="text-secondary-foreground/80">Christmas Celebrations</li>
+              {["School Functions", "Diwali & Festivals", "Janmashtami Special", "Independence Day", "Christmas Celebrations"].map((occasion) => (
+                <li key={occasion} className="text-secondary-foreground/80 flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block shrink-0"></span>
+                  {occasion}
+                </li>
+              ))}
             </ul>
           </div>
 

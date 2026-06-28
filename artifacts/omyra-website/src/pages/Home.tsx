@@ -66,12 +66,15 @@ export default function Home() {
           <p className="text-center text-muted-foreground font-medium mb-8 uppercase tracking-widest text-sm">Perfect for every occasion</p>
           <div className="flex flex-wrap justify-center gap-4 md:gap-8">
             {["Diwali", "Independence Day", "Janmashtami", "Christmas", "School Events", "Annual Functions"].map((occasion) => (
-              <span key={occasion} className="px-6 py-3 bg-background rounded-full text-foreground font-semibold border border-border shadow-sm flex items-center gap-2">
+              <span key={occasion} className="px-6 py-3 bg-background rounded-full text-foreground font-semibold border border-border shadow-sm flex items-center gap-2 select-none">
                 <Sparkles className="w-4 h-4 text-accent" />
                 {occasion}
               </span>
             ))}
           </div>
+          <p className="text-center text-muted-foreground text-sm mt-6">
+            Browse our full catalogue to find the perfect costume for your celebration.
+          </p>
         </div>
       </section>
 
