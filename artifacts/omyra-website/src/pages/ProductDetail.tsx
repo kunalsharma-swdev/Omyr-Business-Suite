@@ -3,6 +3,7 @@ import { useParams, Link } from "wouter";
 import { useProduct } from "@/hooks/use-supabase";
 import { getProductImageUrl } from "@/lib/supabase";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { ShareWhatsAppButton } from "@/components/ShareWhatsAppButton";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ChevronRight, Home, AlertCircle, Tag, Sparkles } from "lucide-react";
 import { SiInstagram } from "react-icons/si";
@@ -151,20 +152,29 @@ export default function ProductDetail() {
                 ))}
               </div>
 
-              <div className="mt-auto flex flex-col sm:flex-row gap-3">
-                <WhatsAppButton
-                  text="Enquire on WhatsApp"
-                  message={whatsappMessage}
-                  className="rounded-full px-7 py-3 text-sm font-semibold shadow-[0_4px_16px_rgba(37,211,102,0.3)] flex-1"
-                />
-                <a
-                  href="https://instagram.com/omyra_fancydress_boutique"
-                  target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3 text-sm font-semibold rounded-full border-2 border-[#E1306C] text-[#E1306C] hover:bg-[#E1306C] hover:text-white transition-all duration-200 flex-1"
-                >
-                  <SiInstagram className="w-4 h-4" />
-                  Instagram
-                </a>
+              <div className="mt-auto space-y-3">
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <WhatsAppButton
+                    text="Enquire on WhatsApp"
+                    message={whatsappMessage}
+                    className="rounded-full px-7 py-3 text-sm font-semibold shadow-[0_4px_16px_rgba(37,211,102,0.3)] flex-1"
+                  />
+                  <a
+                    href="https://instagram.com/omyra_fancydress_boutique"
+                    target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-3 text-sm font-semibold rounded-full border-2 border-[#E1306C] text-[#E1306C] hover:bg-[#E1306C] hover:text-white transition-all duration-200 flex-1"
+                  >
+                    <SiInstagram className="w-4 h-4" />
+                    Instagram
+                  </a>
+                </div>
+                <div className="pt-1 border-t border-[#E5E7EB] dark:border-[#23203A]">
+                  <p className="text-[#9CA3AF] dark:text-[#6B6480] font-sans text-xs mb-2">Share this costume with family or friends</p>
+                  <ShareWhatsAppButton
+                    title={formatName(product.product_name)}
+                    variant="full"
+                  />
+                </div>
               </div>
             </div>
           </div>

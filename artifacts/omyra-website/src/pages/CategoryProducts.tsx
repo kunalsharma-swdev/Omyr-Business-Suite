@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "wouter";
 import { useProducts } from "@/hooks/use-supabase";
 import { ProductCard } from "@/components/ProductCard";
+import { ShareWhatsAppButton } from "@/components/ShareWhatsAppButton";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ChevronLeft, ChevronRight, ArrowLeft, ShoppingBag } from "lucide-react";
 
@@ -53,9 +54,16 @@ export default function CategoryProducts() {
                 </p>
               )}
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-[#E8177A]/8 dark:bg-[#E8177A]/10 rounded-full border border-[#E8177A]/20">
-              <ShoppingBag className="w-4 h-4 text-[#E8177A]" />
-              <span className="text-[#E8177A] font-sans text-xs font-semibold tracking-wide">Rental Only</span>
+            <div className="flex items-center gap-3 flex-wrap">
+              <div className="flex items-center gap-2 px-4 py-2 bg-[#E8177A]/8 dark:bg-[#E8177A]/10 rounded-full border border-[#E8177A]/20">
+                <ShoppingBag className="w-4 h-4 text-[#E8177A]" />
+                <span className="text-[#E8177A] font-sans text-xs font-semibold tracking-wide">Rental Only</span>
+              </div>
+              <ShareWhatsAppButton
+                title={formatName(decodedCategory)}
+                subtitle="category"
+                variant="pill"
+              />
             </div>
           </div>
         </div>
