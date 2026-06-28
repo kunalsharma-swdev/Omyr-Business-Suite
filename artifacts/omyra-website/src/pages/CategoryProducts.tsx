@@ -62,10 +62,9 @@ export default function CategoryProducts() {
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
               {data.products.map((product, i) => (
-                <div key={product.id} className="animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both" style={{ animationDelay: `${i * 50}ms` }}>
-                  <ProductCard 
-                    id={product.id}
-                    name={product.product_name}
+                <div key={product.product_name} className="animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both" style={{ animationDelay: `${i * 50}ms` }}>
+                  <ProductCard
+                    productName={product.product_name}
                     category={product.category}
                     description={product.description}
                     imageName={product.image_name}

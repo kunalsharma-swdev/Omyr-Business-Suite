@@ -8,8 +8,9 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ChevronRight, Home, Info, AlertCircle } from "lucide-react";
 
 export default function ProductDetail() {
-  const params = useParams<{ id: string }>();
-  const { data: product, isLoading, error } = useProduct(params.id || "");
+  const params = useParams<{ name: string }>();
+  const productName = params.name ? decodeURIComponent(params.name) : "";
+  const { data: product, isLoading, error } = useProduct(productName);
 
   useEffect(() => {
     if (product) {

@@ -8,7 +8,6 @@ export interface Category {
 }
 
 export interface Product {
-  id: number;
   product_name: string;
   description: string;
   category: string;
@@ -74,20 +73,20 @@ export function useProducts(category?: string, page: number = 1, pageSize: numbe
   });
 }
 
-export function useProduct(id: string) {
+export function useProduct(productName: string) {
   return useQuery({
-    queryKey: ['product', id],
+    queryKey: ['product', productName],
     queryFn: async () => {
       const { data, error } = await supabase
         .from('products')
         .select('*')
-        .eq('id', id)
+        .eq('product_name', productName)
         .maybeSingle();
-        
+
       if (error) throw error;
       if (!data) throw new Error('Product not found');
       return data as Product;
     },
-    enabled: !!id
+    enabled: !!productName
   });
 }
