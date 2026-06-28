@@ -7,10 +7,10 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#1F2937] text-white pt-16 pb-8">
+    <footer className="bg-[#1F2937] dark:bg-[#07040F] text-white pt-16 pb-8 border-t border-white/5">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12 pb-12 border-b border-white/10">
-          
+
           <div className="space-y-5">
             <img
               src={getLogoUrl()}

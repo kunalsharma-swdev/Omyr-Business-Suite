@@ -17,24 +17,21 @@ function formatName(name: string) {
 export function CategoryCard({ name, imageName }: CategoryCardProps) {
   return (
     <Link href={`/catalogue/${encodeURIComponent(name)}`}>
-      <div className="group cursor-pointer overflow-hidden relative rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.14)] transition-all duration-500">
+      <div className="group cursor-pointer overflow-hidden relative rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.14)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.6)] transition-all duration-500">
         <AspectRatio ratio={4 / 3}>
           {imageName ? (
             <img
               src={getProductImageUrl(imageName)}
               alt={`${formatName(name)} costumes`}
-              className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-108"
-              style={{ transform: "scale(1)", transition: "transform 700ms ease" }}
-              onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.06)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; }}
+              className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-[#FFF8FC] to-[#F3F4F6] flex items-center justify-center">
-              <span className="text-[#6B7280] font-sans text-sm">No Image</span>
+            <div className="w-full h-full bg-gradient-to-br from-[#FFF8FC] dark:from-[#16112A] to-[#F3E8FF] dark:to-[#0F0C1E] flex items-center justify-center">
+              <span className="text-[#6B7280] dark:text-[#8B8499] font-sans text-sm">No Image</span>
             </div>
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent transition-opacity duration-500" />
-          
+
           <div className="absolute inset-0 flex flex-col justify-end p-6">
             <div className="flex items-end justify-between">
               <div>

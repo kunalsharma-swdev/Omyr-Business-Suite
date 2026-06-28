@@ -114,28 +114,42 @@
   --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 }
 
+/* ── Deep purple-black dark theme ── */
 .dark {
-  --background: 215 28% 8%;
-  --foreground: 0 0% 97%;
-  --border: 220 9% 20%;
-  --card: 215 28% 10%;
-  --card-foreground: 0 0% 97%;
-  --card-border: 220 9% 20%;
-  --popover: 215 28% 10%;
-  --popover-foreground: 0 0% 97%;
-  --popover-border: 220 9% 20%;
-  --primary: 332 83% 50%;
+  --background: 258 60% 7%;       /* #09061A */
+  --foreground: 270 10% 95%;      /* #F1F0F5 */
+  --border: 265 28% 17%;          /* #23203A */
+  --card: 258 52% 10%;            /* #0F0C1E */
+  --card-foreground: 270 10% 95%;
+  --card-border: 265 28% 17%;
+  --popover: 258 52% 10%;
+  --popover-foreground: 270 10% 95%;
+  --popover-border: 265 28% 17%;
+  --primary: 332 83% 50%;         /* Pink stays */
   --primary-foreground: 0 0% 100%;
-  --secondary: 262 83% 58%;
+  --secondary: 262 83% 58%;       /* Purple stays */
   --secondary-foreground: 0 0% 100%;
   --accent: 43 96% 56%;
   --accent-foreground: 215 28% 12%;
-  --muted: 215 28% 14%;
-  --muted-foreground: 220 13% 65%;
+  --muted: 265 42% 13%;           /* #16112A */
+  --muted-foreground: 270 10% 58%;/* #8B8499 */
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
-  --input: 220 9% 20%;
+  --input: 265 28% 17%;
   --ring: 332 83% 50%;
+
+  --sidebar: 258 52% 10%;
+  --sidebar-foreground: 270 10% 95%;
+  --sidebar-border: 265 28% 17%;
+  --sidebar-primary: 332 83% 50%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 265 42% 13%;
+  --sidebar-accent-foreground: 270 10% 95%;
+  --sidebar-ring: 332 83% 50%;
+
+  --elevate-1: rgba(255,255,255,.03);
+  --elevate-2: rgba(255,255,255,.06);
+  --button-outline: rgba(255,255,255,.12);
 }
 
 @layer base {
