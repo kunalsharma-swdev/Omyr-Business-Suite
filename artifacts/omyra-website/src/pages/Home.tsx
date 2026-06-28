@@ -29,9 +29,9 @@ function CategorySidebar({ onClose, isDrawer = false }: { onClose?: () => void; 
   };
 
   return (
-    <div className="flex flex-col h-full bg-white dark:bg-[#0F0C1E]">
+    <div className="flex flex-col h-full bg-[#FFF8FC] dark:bg-[#0F0C1E]">
       {/* Header */}
-      <div className="px-5 pt-5 pb-4 border-b border-[#E5E7EB] dark:border-[#23203A]">
+      <div className="px-5 pt-5 pb-4 border-b border-[#F0DCF0] dark:border-[#23203A]">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <LayoutGrid className="w-4 h-4 text-[#E8177A]" />
@@ -65,7 +65,7 @@ function CategorySidebar({ onClose, isDrawer = false }: { onClose?: () => void; 
         {isLoading ? (
           <div className="space-y-1.5 px-2">
             {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="h-9 bg-[#F3F4F6] dark:bg-[#16112A] rounded-xl animate-pulse" />
+              <div key={i} className="h-9 bg-[#F5E8F5] dark:bg-[#16112A] rounded-xl animate-pulse" />
             ))}
           </div>
         ) : sorted.length === 0 ? (
@@ -76,7 +76,7 @@ function CategorySidebar({ onClose, isDrawer = false }: { onClose?: () => void; 
               <li key={cat.id}>
                 <button
                   onClick={() => handleCategoryClick(cat.name)}
-                  className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left font-sans text-sm text-[#6B7280] dark:text-[#8B8499] hover:bg-[#FFF8FC] dark:hover:bg-[#16112A] hover:text-[#E8177A] transition-all duration-150 group"
+                  className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left font-sans text-sm text-[#6B7280] dark:text-[#8B8499] hover:bg-[#FCF0F8] dark:hover:bg-[#16112A] hover:text-[#E8177A] transition-all duration-150 group"
                 >
                   <span className="font-medium">{formatName(cat.name)}</span>
                   <ChevronRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-150 text-[#E8177A]" />
@@ -88,7 +88,7 @@ function CategorySidebar({ onClose, isDrawer = false }: { onClose?: () => void; 
       </div>
 
       {/* Footer CTA */}
-      <div className="px-5 py-4 border-t border-[#E5E7EB] dark:border-[#23203A]">
+      <div className="px-5 py-4 border-t border-[#F0DCF0] dark:border-[#23203A]">
         <Link href="/catalogue">
           <span
             onClick={onClose}
@@ -119,7 +119,7 @@ export default function Home() {
     <div className="flex min-h-screen bg-[#FFF8FC] dark:bg-[#09061A]">
 
       {/* ── Desktop Sidebar ── */}
-      <aside className="hidden lg:flex flex-col w-72 xl:w-80 shrink-0 sticky top-16 h-[calc(100vh-4rem)] border-r border-[#E5E7EB] dark:border-[#23203A] shadow-[2px_0_16px_rgba(0,0,0,0.04)] dark:shadow-[2px_0_16px_rgba(0,0,0,0.3)]">
+      <aside className="hidden lg:flex flex-col w-72 xl:w-80 shrink-0 sticky top-16 h-[calc(100vh-4rem)] border-r border-[#F0DCF0] dark:border-[#23203A] shadow-[2px_0_20px_rgba(232,23,122,0.04)] dark:shadow-[2px_0_16px_rgba(0,0,0,0.3)]">
         <CategorySidebar />
       </aside>
 
@@ -135,7 +135,7 @@ export default function Home() {
       <main className="flex-1 overflow-hidden">
 
         {/* Mobile category trigger */}
-        <div className="lg:hidden sticky top-16 z-30 bg-white dark:bg-[#0F0C1E] border-b border-[#E5E7EB] dark:border-[#23203A] px-4 py-2.5 flex items-center gap-3 shadow-sm">
+        <div className="lg:hidden sticky top-16 z-30 bg-[#FFF8FC] dark:bg-[#0F0C1E] border-b border-[#F0DCF0] dark:border-[#23203A] px-4 py-2.5 flex items-center gap-3 shadow-sm">
           <button
             onClick={() => setDrawerOpen(true)}
             className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#E8177A]/30 text-[#E8177A] font-sans text-xs font-semibold hover:bg-[#FFF8FC] dark:hover:bg-[#16112A] transition-colors"
@@ -178,7 +178,7 @@ export default function Home() {
                 <a
                   href="https://wa.me/918197547412"
                   target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-white dark:bg-[#16112A] border border-[#E5E7EB] dark:border-[#23203A] text-[#1F2937] dark:text-[#F1F0F5] font-sans font-semibold text-sm hover:border-[#25D366] hover:text-[#25D366] hover:shadow-[0_4px_16px_rgba(37,211,102,0.2)] transition-all duration-200 shadow-[0_2px_8px_rgba(0,0,0,0.06)]"
+                  className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-white/70 dark:bg-[#16112A] border border-[#F0DCF0] dark:border-[#23203A] text-[#1F2937] dark:text-[#F1F0F5] font-sans font-semibold text-sm hover:border-[#25D366] hover:text-[#25D366] hover:shadow-[0_4px_16px_rgba(37,211,102,0.2)] transition-all duration-200 shadow-[0_2px_8px_rgba(232,23,122,0.08)]"
                 >
                   <SiWhatsapp className="w-4 h-4 text-[#25D366]" />
                   WhatsApp Enquiry
@@ -197,7 +197,7 @@ export default function Home() {
           <div className="container mx-auto px-5 md:px-8 mt-12 relative z-10">
             <div className="flex flex-wrap gap-2">
               {["Diwali", "Independence Day", "Janmashtami", "Christmas", "School Annual Day", "Republic Day", "Navratri", "Cultural Fest"].map((o) => (
-                <span key={o} className="px-4 py-1.5 bg-white dark:bg-[#16112A] border border-[#E5E7EB] dark:border-[#23203A] rounded-full text-[#6B7280] dark:text-[#8B8499] font-sans text-xs font-medium hover:border-[#E8177A] hover:text-[#E8177A] hover:bg-[#FFF8FC] dark:hover:bg-[#1A1335] transition-all duration-200 cursor-default shadow-[0_1px_4px_rgba(0,0,0,0.04)]">
+                <span key={o} className="px-4 py-1.5 bg-white/60 dark:bg-[#16112A] border border-[#F0DCF0] dark:border-[#23203A] rounded-full text-[#9B5EA6] dark:text-[#8B8499] font-sans text-xs font-medium hover:border-[#E8177A] hover:text-[#E8177A] hover:bg-[#FCF0F8] dark:hover:bg-[#1A1335] transition-all duration-200 cursor-default shadow-[0_1px_4px_rgba(232,23,122,0.06)]">
                   {o}
                 </span>
               ))}
