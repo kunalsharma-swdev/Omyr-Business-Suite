@@ -1,5 +1,6 @@
 import { Link } from "wouter";
-import { Instagram, MapPin, Phone, Mail } from "lucide-react";
+import { Instagram, MapPin, Phone } from "lucide-react";
+import { SiWhatsapp } from "react-icons/si";
 import { getLogoUrl } from "@/lib/supabase";
 
 export function Footer() {
@@ -26,15 +27,24 @@ export function Footer() {
             <p className="text-secondary-foreground/80 leading-relaxed font-medium">
               Make Every Celebration Special. Premium fancy dress and school uniform rentals for all occasions.
             </p>
-            <div className="flex space-x-4 pt-2">
-              <a 
-                href="https://instagram.com/omyra_fancydress_boutique" 
-                target="_blank" 
+            <div className="flex space-x-3 pt-2">
+              <a
+                href="https://instagram.com/omyra_fancydress_boutique"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white/10 p-2 rounded-full hover:bg-primary transition-colors text-white"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://wa.me/918197547412"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white/10 p-2 rounded-full hover:bg-[#25D366] transition-colors text-white"
+                aria-label="WhatsApp"
+              >
+                <SiWhatsapp className="w-5 h-5" />
               </a>
             </div>
           </div>

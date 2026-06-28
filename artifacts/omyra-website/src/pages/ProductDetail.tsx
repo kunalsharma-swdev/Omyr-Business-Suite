@@ -6,6 +6,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ChevronRight, Home, Info, AlertCircle } from "lucide-react";
+import { SiInstagram } from "react-icons/si";
 
 export default function ProductDetail() {
   const params = useParams<{ name: string }>();
@@ -110,17 +111,26 @@ export default function ProductDetail() {
                 <div>
                   <h4 className="font-semibold text-blue-900 mb-1">Rental Only</h4>
                   <p className="text-blue-800/80 text-sm">
-                    This product is available for rent only. Contact us on WhatsApp for availability, pricing, and booking details.
+                    This product is available for rent only. Reach out on WhatsApp or Instagram for availability, pricing, and booking details.
                   </p>
                 </div>
               </div>
 
-              <div className="mt-auto">
-                <WhatsAppButton 
-                  text="Enquire on WhatsApp" 
+              <div className="mt-auto flex flex-col sm:flex-row gap-3">
+                <WhatsAppButton
+                  text="Enquire on WhatsApp"
                   message={whatsappMessage}
-                  className="w-full sm:w-auto px-8 py-6 text-lg rounded-full shadow-md hover:shadow-lg"
+                  className="px-8 py-6 text-lg rounded-full shadow-md hover:shadow-lg"
                 />
+                <a
+                  href={`https://instagram.com/omyra_fancydress_boutique`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-6 text-lg font-semibold rounded-full border-2 border-[#E1306C] text-[#E1306C] hover:bg-[#E1306C] hover:text-white transition-all duration-200 shadow-md hover:shadow-lg"
+                >
+                  <SiInstagram className="w-5 h-5" />
+                  Message on Instagram
+                </a>
               </div>
             </div>
 
