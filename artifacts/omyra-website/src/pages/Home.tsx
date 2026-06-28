@@ -65,16 +65,22 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <p className="text-center text-muted-foreground font-medium mb-8 uppercase tracking-widest text-sm">Perfect for every occasion</p>
           <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-            {["Diwali", "Independence Day", "Janmashtami", "Christmas", "School Events", "Annual Functions"].map((occasion) => (
-              <span key={occasion} className="px-6 py-3 bg-background rounded-full text-foreground font-semibold border border-border shadow-sm flex items-center gap-2 select-none">
-                <Sparkles className="w-4 h-4 text-accent" />
-                {occasion}
-              </span>
+            {[
+              { label: "Diwali", slug: "diwali" },
+              { label: "Independence Day", slug: "independence_day" },
+              { label: "Janmashtami", slug: "janmashtami" },
+              { label: "Christmas", slug: "christmas" },
+              { label: "School Events", slug: "school_events" },
+              { label: "Annual Functions", slug: "annual_functions" },
+            ].map(({ label, slug }) => (
+              <Link key={slug} href={`/catalogue/${slug}`}>
+                <span className="px-6 py-3 bg-background rounded-full text-foreground font-semibold border border-border shadow-sm flex items-center gap-2 cursor-pointer hover:border-primary hover:text-primary hover:shadow-md transition-all duration-200">
+                  <Sparkles className="w-4 h-4 text-accent" />
+                  {label}
+                </span>
+              </Link>
             ))}
           </div>
-          <p className="text-center text-muted-foreground text-sm mt-6">
-            Browse our full catalogue to find the perfect costume for your celebration.
-          </p>
         </div>
       </section>
 
