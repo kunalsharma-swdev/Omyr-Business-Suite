@@ -61,21 +61,33 @@ export default function Home() {
       </section>
 
       {/* Occasions Section */}
-      <section className="py-16 bg-white border-b border-border">
+      <section className="py-20 bg-white border-b border-border overflow-hidden">
         <div className="container mx-auto px-4">
-          <p className="text-center text-muted-foreground font-medium mb-8 uppercase tracking-widest text-sm">Perfect for every occasion</p>
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8">
+          <p className="text-center text-muted-foreground font-medium mb-12 uppercase tracking-widest text-sm">Perfect for every occasion</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
             {[
-              { label: "Diwali", slug: "diwali" },
-              { label: "Independence Day", slug: "independence_day" },
-              { label: "Janmashtami", slug: "janmashtami" },
-            ].map(({ label, slug }) => (
-              <Link key={slug} href={`/catalogue/${slug}`}>
-                <span className="px-6 py-3 bg-background rounded-full text-foreground font-semibold border border-border shadow-sm flex items-center gap-2 cursor-pointer hover:border-primary hover:text-primary hover:shadow-md transition-all duration-200">
-                  <Sparkles className="w-4 h-4 text-accent" />
-                  {label}
-                </span>
-              </Link>
+              { label: "Diwali", icon: "🪔", gradient: "from-orange-400 to-yellow-400" },
+              { label: "Independence Day", icon: "🇮🇳", gradient: "from-green-400 to-emerald-500" },
+              { label: "Janmashtami", icon: "🦚", gradient: "from-blue-400 to-indigo-500" },
+              { label: "Christmas", icon: "🎄", gradient: "from-red-400 to-rose-500" },
+              { label: "School Events", icon: "🎓", gradient: "from-purple-400 to-violet-500" },
+              { label: "Annual Day", icon: "✨", gradient: "from-pink-400 to-fuchsia-500" },
+              { label: "Navratri", icon: "🏺", gradient: "from-amber-400 to-orange-500" },
+              { label: "Holi", icon: "🎨", gradient: "from-pink-300 to-purple-400" },
+              { label: "Eid", icon: "🌙", gradient: "from-teal-400 to-cyan-500" },
+              { label: "Republic Day", icon: "🎺", gradient: "from-blue-500 to-blue-700" },
+              { label: "Pongal", icon: "🌾", gradient: "from-yellow-400 to-lime-500" },
+              { label: "Cultural Fest", icon: "🎭", gradient: "from-rose-400 to-pink-500" },
+            ].map(({ label, icon, gradient }) => (
+              <div
+                key={label}
+                className={`relative rounded-2xl bg-gradient-to-br ${gradient} p-px shadow-md`}
+              >
+                <div className="h-full rounded-2xl bg-white/90 backdrop-blur-sm flex flex-col items-center justify-center gap-2 py-5 px-3 text-center">
+                  <span className="text-3xl">{icon}</span>
+                  <span className="text-sm font-bold text-foreground leading-tight">{label}</span>
+                </div>
+              </div>
             ))}
           </div>
         </div>
