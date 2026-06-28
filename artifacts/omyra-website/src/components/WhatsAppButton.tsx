@@ -17,9 +17,7 @@ export function WhatsAppButton({
   size = "default"
 }: WhatsAppButtonProps) {
   const handleClick = () => {
-    // Note: The phone number specified in the prompt is +91 81975 47412 but the wa.me link was wa.me/919817547412. 
-    // I will use the wa.me link provided in the prompt requirements.
-    const url = `https://wa.me/919817547412${message ? `?text=${encodeURIComponent(message)}` : ""}`;
+    const url = `https://wa.me/918197547412${message ? `?text=${encodeURIComponent(message)}` : ""}`;
     window.open(url, "_blank");
   };
 
