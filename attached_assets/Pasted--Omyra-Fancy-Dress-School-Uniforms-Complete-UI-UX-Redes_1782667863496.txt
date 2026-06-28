@@ -1,0 +1,362 @@
+# Omyra Fancy Dress & School Uniforms – Complete UI/UX Redesign (Light Theme)
+
+The website is already fully functional. This is NOT a rebuild.
+
+## CRITICAL
+
+Do NOT modify or break any existing functionality.
+
+Preserve exactly as they currently work:
+
+- Supabase integration
+- Database queries
+- Dynamic category fetching
+- Dynamic product fetching
+- Storage bucket image loading
+- Product detail pages
+- WhatsApp enquiry flow
+- Routing
+- Pagination (25 products per page)
+- Logo loading from the "assets" bucket
+- SEO
+- Responsiveness
+- All business logic
+
+This task is purely a UI/UX redesign.
+
+--------------------------------------------------
+
+## DESIGN GOAL
+
+The client wants a much lighter theme.
+
+Create a website that feels:
+
+- Premium
+- Bright
+- Elegant
+- Modern
+- Family-friendly
+- Spacious
+- Trustworthy
+
+The website should resemble a high-quality modern e-commerce website while remaining colorful enough for a Fancy Dress & Costume Rental business.
+
+Avoid dark sections dominating the design.
+
+Use generous white space.
+
+--------------------------------------------------
+
+## COLOR PALETTE
+
+Primary Pink
+#E8177A
+
+Royal Purple
+#7C3AED
+
+Royal Blue
+#2563EB
+
+Golden Yellow
+#FBBF24
+
+Background
+#FFFFFF
+or
+#FFF8FC
+
+Cards
+#FFFFFF
+
+Main Text
+#1F2937
+
+Secondary Text
+#6B7280
+
+Border
+#E5E7EB
+
+Use colors mainly as accents.
+
+--------------------------------------------------
+
+## DESIGN SYSTEM
+
+Redesign the entire website using a consistent premium design language.
+
+Use:
+
+- modern typography
+- beautiful spacing
+- rounded corners
+- soft shadows
+- subtle gradients
+- elegant hover animations
+- smooth transitions
+- premium buttons
+- consistent cards
+- excellent visual hierarchy
+
+The website should not look AI-generated.
+
+--------------------------------------------------
+
+## HOMEPAGE
+
+Completely redesign the homepage.
+
+Create a modern two-column layout.
+
+LEFT SIDE (approximately 25%)
+
+Create a Dynamic Category Sidebar.
+
+RIGHT SIDE (approximately 75%)
+
+Include:
+
+- Hero Section
+- Featured Categories
+- Featured Products
+- Why Choose Us
+- Rental Process
+- Customer Benefits
+- Contact Section
+- Footer
+
+The homepage should encourage visitors to browse costumes immediately.
+
+--------------------------------------------------
+
+## DYNAMIC HOMEPAGE CATEGORY SIDEBAR
+
+This sidebar is one of the most important parts of the homepage.
+
+Requirements:
+
+- Fetch every category dynamically from Supabase.
+- Never hardcode category names.
+- Whenever a new category is added to the database, it should automatically appear.
+- Clicking a category opens that category page.
+- Highlight the active category.
+- Display categories alphabetically unless a database sort field already exists.
+- Include a search box at the top.
+- Make the sidebar scrollable if many categories exist.
+- Make it sticky while scrolling on desktop.
+- On mobile convert it into a slide-out drawer opened using a "Browse Categories" button.
+
+Design:
+
+- White background
+- Rounded corners
+- Soft shadow
+- Light border
+- Beautiful hover animations
+- Premium active states using the brand colors
+
+--------------------------------------------------
+
+## NAVIGATION
+
+Redesign the navigation bar.
+
+Improve:
+
+- spacing
+- typography
+- hover effects
+- sticky navigation
+- active page indicator
+- mobile navigation drawer
+
+--------------------------------------------------
+
+## HERO SECTION
+
+Create a premium hero section.
+
+Use:
+
+- elegant typography
+- subtle gradient accents
+- modern layout
+- beautiful CTA buttons
+- rental messaging
+- clean composition
+
+--------------------------------------------------
+
+## FEATURED CATEGORIES
+
+Redesign category cards.
+
+IMPORTANT:
+
+Continue using the FIRST PRODUCT IMAGE from that category in Supabase as the category image.
+
+Do not modify the existing logic.
+
+Only improve the UI.
+
+--------------------------------------------------
+
+## PRODUCT CARDS
+
+Completely redesign product cards.
+
+Improve:
+
+- image presentation
+- typography
+- spacing
+- shadows
+- hover animations
+- enquiry button
+- rental badge
+
+Do not change functionality.
+
+--------------------------------------------------
+
+## CATEGORY PAGE
+
+Improve:
+
+- layout
+- spacing
+- filters
+- product grid
+- pagination
+
+Keep 25 products per page.
+
+--------------------------------------------------
+
+## PRODUCT DETAIL PAGE
+
+Redesign completely.
+
+Improve:
+
+- image gallery
+- product information
+- WhatsApp enquiry section
+- rental notice
+- related products
+- breadcrumbs
+
+Keep the existing WhatsApp enquiry functionality unchanged.
+
+--------------------------------------------------
+
+## ABOUT PAGE
+
+Modernize completely.
+
+Improve:
+
+- layout
+- typography
+- story section
+- business values
+- trust elements
+
+--------------------------------------------------
+
+## CONTACT PAGE
+
+Improve:
+
+- contact cards
+- Google Maps section
+- business details
+- WhatsApp contact
+- responsive layout
+
+Do not modify the existing map embed or contact information.
+
+--------------------------------------------------
+
+## FOOTER
+
+Create a premium footer.
+
+Include:
+
+- logo
+- navigation
+- contact details
+- rental notice
+- copyright
+- social media links if available
+
+--------------------------------------------------
+
+## ANIMATIONS
+
+Add tasteful premium animations.
+
+Examples:
+
+- fade in
+- hover lift
+- smooth transitions
+- gentle image zoom
+- elegant button animations
+
+Animations should feel premium and not distracting.
+
+--------------------------------------------------
+
+## MOBILE RESPONSIVENESS
+
+Perfect the experience for:
+
+- Mobile
+- Tablet
+- Desktop
+
+The homepage category sidebar must become a slide-out drawer on mobile.
+
+--------------------------------------------------
+
+## PERFORMANCE
+
+Do not introduce unnecessary libraries.
+
+Keep the website lightweight and fast.
+
+--------------------------------------------------
+
+## ACCESSIBILITY
+
+Maintain accessibility best practices.
+
+Use semantic HTML.
+
+Maintain proper color contrast.
+
+--------------------------------------------------
+
+## FINAL REQUIREMENTS
+
+Continue loading every category, product, image and product detail dynamically from Supabase.
+
+Do not hardcode any categories.
+
+Do not hardcode products.
+
+Do not change the database schema.
+
+Do not modify API calls.
+
+Do not modify Supabase configuration.
+
+Do not change routing.
+
+Do not break any existing functionality.
+
+The goal is to transform the website into a premium, bright, elegant and modern rental website while preserving every existing feature.

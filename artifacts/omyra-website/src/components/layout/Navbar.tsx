@@ -8,11 +8,8 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [location] = useLocation();
 
-  const isHome = location === "/";
-  const isDark = isHome && !scrolled;
-
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -20,6 +17,11 @@ export function Navbar() {
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [isOpen]);
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -29,111 +31,112 @@ export function Navbar() {
   ];
 
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        scrolled || !isHome
-          ? "bg-white/95 backdrop-blur-lg border-b border-border py-3 shadow-sm"
-          : "bg-transparent py-5"
-      }`}
-    >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5 z-50">
-            <img
-              src={getLogoUrl()}
-              alt="Omyra Logo"
-              className="h-11 w-auto object-contain transition-all duration-300"
-              onError={(e) => {
-                e.currentTarget.style.display = "none";
-                e.currentTarget.parentElement
-                  ?.querySelector(".logo-text")
-                  ?.classList.remove("hidden");
-              }}
-            />
-            <span
-              className={`logo-text hidden font-serif text-2xl font-light transition-colors ${
-                isDark ? "text-white" : "text-foreground"
-              }`}
-            >
-              Omyra
-            </span>
-          </Link>
+    <>
+      <nav
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-white/98 backdrop-blur-xl shadow-[0_1px_20px_rgba(0,0,0,0.08)] py-2.5"
+            : "bg-white/95 backdrop-blur-md border-b border-[#E5E7EB] py-3.5"
+        }`}
+      >
+        <div className="container mx-auto px-4 md:px-6 max-w-7xl">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="flex items-center gap-2.5 z-50 group">
+              <img
+                src={getLogoUrl()}
+                alt="Omyra Logo"
+                className="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                  const sibling = e.currentTarget.parentElement?.querySelector(".logo-text");
+                  if (sibling) (sibling as HTMLElement).classList.remove("hidden");
+                }}
+              />
+              <span className="logo-text hidden font-serif text-2xl font-light text-[#1F2937]">
+                Omyra
+              </span>
+            </Link>
 
-          <div className="hidden md:flex items-center gap-10">
-            <ul className="flex gap-8">
+            <div className="hidden md:flex items-center gap-8">
+              <ul className="flex gap-7">
+                {navLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className={`font-sans text-sm font-medium tracking-wide transition-all duration-200 relative group py-1 ${
+                        location === link.href
+                          ? "text-[#E8177A]"
+                          : "text-[#6B7280] hover:text-[#1F2937]"
+                      }`}
+                    >
+                      {link.name}
+                      <span
+                        className={`absolute bottom-0 left-0 h-[2px] bg-[#E8177A] rounded-full transition-all duration-300 ${
+                          location === link.href ? "w-full" : "w-0 group-hover:w-full"
+                        }`}
+                      />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <Link href="/catalogue">
+                <span className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-[#E8177A] text-white text-xs font-sans font-semibold tracking-[0.12em] uppercase hover:bg-[#c8126a] transition-all duration-200 shadow-[0_2px_12px_rgba(232,23,122,0.35)] hover:shadow-[0_4px_16px_rgba(232,23,122,0.45)] cursor-pointer">
+                  Browse Rentals
+                </span>
+              </Link>
+            </div>
+
+            <button
+              className="md:hidden z-50 w-9 h-9 flex items-center justify-center rounded-full hover:bg-[#FFF8FC] transition-colors text-[#1F2937]"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile drawer */}
+      <div
+        className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${
+          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <div
+          className="absolute inset-0 bg-black/30 backdrop-blur-sm"
+          onClick={() => setIsOpen(false)}
+        />
+        <div
+          className={`absolute top-0 right-0 h-full w-[280px] bg-white shadow-2xl transform transition-transform duration-300 ease-out ${
+            isOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <div className="flex flex-col h-full pt-20 px-6 pb-8">
+            <ul className="flex flex-col space-y-1 mb-8">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className={`font-sans text-sm tracking-wide transition-all duration-300 relative group ${
+                    className={`block py-3.5 px-4 rounded-xl font-sans text-lg font-light transition-colors duration-200 ${
                       location === link.href
-                        ? isDark
-                          ? "text-primary"
-                          : "text-primary"
-                        : isDark
-                        ? "text-white/70 hover:text-white"
-                        : "text-foreground/70 hover:text-foreground"
+                        ? "text-[#E8177A] bg-[#FFF8FC]"
+                        : "text-[#1F2937] hover:bg-[#FFF8FC]"
                     }`}
                   >
                     {link.name}
-                    <span
-                      className={`absolute -bottom-0.5 left-0 h-px bg-primary transition-all duration-300 ${
-                        location === link.href ? "w-full" : "w-0 group-hover:w-full"
-                      }`}
-                    />
                   </Link>
                 </li>
               ))}
             </ul>
-            <Link href="/catalogue">
-              <span
-                className={`inline-flex items-center justify-center px-6 py-2.5 text-xs font-sans font-medium tracking-[0.18em] uppercase transition-all duration-300 cursor-pointer ${
-                  isDark
-                    ? "border border-white/30 text-white hover:bg-white hover:text-foreground"
-                    : "border border-primary text-primary hover:bg-primary hover:text-white"
-                }`}
-              >
-                Explore Rentals
+            <Link href="/catalogue" className="mt-auto">
+              <span className="flex items-center justify-center w-full py-3.5 rounded-full bg-[#E8177A] text-white font-sans font-semibold tracking-wide text-sm cursor-pointer shadow-[0_4px_16px_rgba(232,23,122,0.35)]">
+                Browse Rentals
               </span>
             </Link>
           </div>
-
-          <button
-            className={`md:hidden z-50 transition-colors ${
-              isDark ? "text-white" : "text-foreground"
-            }`}
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
         </div>
       </div>
-
-      <div
-        className={`fixed inset-0 bg-white z-40 transition-transform duration-400 ease-in-out transform ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        } md:hidden pt-24`}
-      >
-        <div className="container mx-auto px-6 py-8 flex flex-col space-y-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className={`text-3xl font-serif font-light border-b border-border py-5 ${
-                location === link.href ? "text-primary" : "text-foreground"
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
-          <Link href="/catalogue">
-            <span className="inline-flex items-center justify-center mt-10 px-8 py-3.5 bg-primary text-white text-xs font-sans font-medium tracking-[0.2em] uppercase w-full cursor-pointer">
-              Explore Rentals
-            </span>
-          </Link>
-        </div>
-      </div>
-    </nav>
+    </>
   );
 }
