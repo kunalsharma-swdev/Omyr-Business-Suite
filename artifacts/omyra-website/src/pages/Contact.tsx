@@ -136,6 +136,37 @@ export default function Contact() {
           </div>
 
         </div>
+
+        {/* Map Section */}
+        <div className="mt-16">
+          <div className="flex items-center gap-3 mb-6">
+            <MapPin className="w-6 h-6 text-primary shrink-0" />
+            <h2 className="text-2xl font-serif font-bold text-foreground">Find Our Store</h2>
+          </div>
+          <div className="rounded-2xl overflow-hidden border border-border shadow-lg w-full h-[400px]">
+            <iframe
+              title="Omyra Fancy Dress Store Location"
+              src="https://maps.google.com/maps?q=Omyra+Fancy+Dress+%26+School+Uniforms&output=embed&z=15"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+          <div className="mt-4 text-center">
+            <a
+              href="https://maps.google.com/?q=Omyra+Fancy+Dress+%26+School+Uniforms"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-primary font-semibold hover:underline"
+            >
+              <MapPin className="w-4 h-4" />
+              Open in Google Maps
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
   );

@@ -208,6 +208,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Map Section */}
+      <section className="py-20 bg-white border-t border-border">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary mb-3">Visit Our Store</h2>
+            <p className="text-muted-foreground text-lg">Come in, try on a costume, and find the perfect fit for your celebration.</p>
+          </div>
+          <div className="rounded-2xl overflow-hidden border border-border shadow-xl w-full h-[420px]">
+            <iframe
+              title="Omyra Fancy Dress Store Location"
+              src="https://maps.google.com/maps?q=Omyra+Fancy+Dress+%26+School+Uniforms&output=embed&z=15"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+          <div className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://maps.google.com/?q=Omyra+Fancy+Dress+%26+School+Uniforms"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-full shadow hover:bg-primary/90 transition-all"
+            >
+              Get Directions
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4">
