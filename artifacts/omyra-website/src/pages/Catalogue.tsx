@@ -13,10 +13,14 @@ export default function Catalogue() {
   return (
     <div className="min-h-screen pt-24 pb-20 bg-background">
       {/* Page Header */}
-      <div className="bg-secondary text-white py-16 mb-12">
+      <div className="bg-[#09000f] text-white py-24 mb-16">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">Our Catalogue</h1>
-          <p className="text-lg text-white/80 max-w-2xl mx-auto">
+          <p className="text-primary/60 font-sans text-[11px] tracking-[0.4em] uppercase mb-6">
+            Rental Boutique
+          </p>
+          <h1 className="text-5xl md:text-7xl font-serif font-light mb-6">Our Catalogue</h1>
+          <div className="w-12 h-px bg-white/15 mx-auto mb-6" />
+          <p className="text-white/40 font-sans text-base max-w-xl mx-auto font-light">
             Explore our diverse collection of rental costumes for every celebration.
           </p>
         </div>

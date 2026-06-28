@@ -11,11 +11,18 @@ export default function About() {
   return (
     <div className="min-h-screen pt-24 pb-20 bg-background">
       {/* Hero */}
-      <div className="bg-primary text-white py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+      <div className="bg-[#09000f] text-white py-24 relative overflow-hidden">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 80% 50% at 50% -10%, rgba(232,23,122,0.18) 0%, transparent 60%)" }}
+        />
         <div className="container mx-auto px-4 relative z-10 text-center max-w-3xl">
-          <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6">About Omyra</h1>
-          <p className="text-xl text-white/90 leading-relaxed">
+          <p className="text-primary/60 font-sans text-[11px] tracking-[0.4em] uppercase mb-6">
+            Our Story
+          </p>
+          <h1 className="text-5xl md:text-7xl font-serif font-light mb-6">About Omyra</h1>
+          <div className="w-12 h-px bg-white/15 mx-auto mb-6" />
+          <p className="text-white/40 font-sans text-base leading-relaxed font-light">
             Bringing joy and authenticity to every celebration through premium fancy dress and school uniform rentals.
           </p>
         </div>

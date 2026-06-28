@@ -3,16 +3,6 @@ import { Link } from "wouter";
 import { useCategories } from "@/hooks/use-supabase";
 import { CategoryCard } from "@/components/CategoryCard";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { Button } from "@/components/ui/button";
-import { getLogoUrl } from "@/lib/supabase";
-import { 
-  Sparkles, 
-  ShoppingBag, 
-  MessageCircle, 
-  CalendarDays,
-  CheckCircle2,
-  Heart
-} from "lucide-react";
 
 export default function Home() {
   useEffect(() => {
@@ -23,199 +13,262 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-gradient-to-br from-primary via-secondary to-blue-600">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 pointer-events-none"></div>
-        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
-          <div className="inline-block bg-white/10 backdrop-blur-md p-4 rounded-2xl mb-8 animate-in fade-in zoom-in duration-700">
-            <img 
-              src={getLogoUrl()} 
-              alt="Omyra Logo" 
-              className="h-24 md:h-32 w-auto object-contain drop-shadow-xl"
-              onError={(e) => e.currentTarget.style.display = 'none'}
-            />
-          </div>
-          
-          <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 tracking-tight animate-in slide-in-from-bottom-8 duration-700 delay-150">
-            Make Every Celebration <span className="text-accent italic">Special</span>
+
+      {/* ── Hero ────────────────────────────────────────────── */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#09000f]">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 100% 55% at 50% -5%, rgba(232,23,122,0.22) 0%, transparent 65%)",
+          }}
+        />
+        <div
+          className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
+          style={{ background: "linear-gradient(to top, #09000f, transparent)" }}
+        />
+
+        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center pt-20">
+          <p className="text-primary/60 font-sans text-[11px] tracking-[0.4em] uppercase mb-12 animate-in fade-in duration-700">
+            Fancy Dress &amp; School Uniforms · Rental Boutique
+          </p>
+
+          <h1
+            className="font-serif font-light text-white leading-[0.92] tracking-tight mb-10 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150"
+            style={{ fontSize: "clamp(4rem, 13vw, 11rem)" }}
+          >
+            Make Every
+            <br />
+            <span className="italic text-primary">Celebration</span>
+            <br />
+            Special
           </h1>
-          
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-4 animate-in slide-in-from-bottom-8 duration-700 delay-300 font-medium">
-            Premium Fancy Dress & School Uniform Rentals
+
+          <div className="w-14 h-px bg-white/15 mx-auto my-10" />
+
+          <p className="text-white/35 font-sans text-sm md:text-base max-w-md mx-auto mb-14 font-light leading-relaxed animate-in fade-in duration-700 delay-300">
+            Beautifully crafted costumes for Diwali, School Events, Janmashtami
+            and more — available for rent.
           </p>
-          <p className="text-lg text-white/80 max-w-2xl mx-auto mb-10 animate-in slide-in-from-bottom-8 duration-700 delay-500">
-            From Diwali to School Annual Days, we provide vibrant, high-quality costumes. 
-            <span className="block mt-2 font-semibold text-accent">All products are available for rent only.</span>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 animate-in fade-in duration-700 delay-500">
+            <Link href="/catalogue">
+              <span className="inline-flex items-center justify-center px-10 py-3.5 border border-white/25 text-white/85 text-xs font-sans font-medium tracking-[0.22em] uppercase hover:bg-white hover:text-foreground transition-all duration-300 cursor-pointer">
+                Explore Catalogue
+              </span>
+            </Link>
+            <a
+              href="https://wa.me/918197547412"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-10 py-3.5 bg-primary text-white text-xs font-sans font-medium tracking-[0.22em] uppercase hover:bg-primary/90 transition-all duration-300"
+            >
+              WhatsApp Enquiry
+            </a>
+          </div>
+
+          <p className="text-white/18 text-[10px] tracking-[0.35em] uppercase mt-14 animate-in fade-in duration-700 delay-700">
+            All products available for rent only
           </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in slide-in-from-bottom-8 duration-700 delay-700">
-            <Button asChild size="lg" className="bg-white text-primary hover:bg-gray-100 font-bold px-8 py-6 text-lg rounded-full w-full sm:w-auto shadow-lg hover:shadow-xl transition-all">
-              <Link href="/catalogue">Explore Catalogue</Link>
-            </Button>
-            <WhatsAppButton 
-              text="Contact on WhatsApp" 
-              className="px-8 py-6 text-lg rounded-full w-full sm:w-auto shadow-lg hover:shadow-xl transition-all"
-            />
+        </div>
+
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
+          <div className="w-px h-12 bg-gradient-to-b from-white/20 to-transparent" />
+        </div>
+      </section>
+
+      {/* ── Occasions Strip ──────────────────────────────────── */}
+      <section className="py-14 bg-white border-b border-border">
+        <div className="container mx-auto px-4">
+          <p className="text-center text-[10px] text-muted-foreground/40 font-sans tracking-[0.4em] uppercase mb-8">
+            Occasions We Serve
+          </p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {[
+              "Diwali",
+              "Independence Day",
+              "Janmashtami",
+              "Christmas",
+              "School Annual Day",
+              "Republic Day",
+              "Navratri",
+              "Cultural Fest",
+            ].map((occasion) => (
+              <span
+                key={occasion}
+                className="px-5 py-2 border border-border text-muted-foreground/70 text-xs font-sans tracking-wider hover:border-primary hover:text-primary transition-all duration-300 cursor-default"
+              >
+                {occasion}
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Occasions Section */}
-      <section className="py-20 bg-white border-b border-border">
-        <div className="container mx-auto px-4">
-          <p className="text-center text-muted-foreground font-medium mb-12 uppercase tracking-widest text-sm">Perfect for every occasion</p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto">
+      {/* ── Featured Categories ──────────────────────────────── */}
+      <section className="py-28 bg-[#fafafa]">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mb-16">
+            <p className="text-[10px] text-muted-foreground/40 font-sans tracking-[0.4em] uppercase mb-4">
+              Our Collection
+            </p>
+            <h2 className="text-5xl md:text-6xl font-serif font-light text-foreground">
+              Browse by Category
+            </h2>
+          </div>
+
+          {isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+              {[1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  className="bg-muted animate-pulse aspect-[4/3]"
+                />
+              ))}
+            </div>
+          ) : error ? (
+            <div className="text-center text-destructive p-8 bg-destructive/10">
+              Failed to load categories. Please try refreshing.
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+              {categories?.slice(0, 6).map((category) => (
+                <CategoryCard
+                  key={category.id}
+                  name={category.name}
+                  imageName={category.image_name}
+                />
+              ))}
+            </div>
+          )}
+
+          <div className="mt-12">
+            <Link href="/catalogue">
+              <span className="inline-flex items-center justify-center px-10 py-3.5 border border-border text-muted-foreground text-xs font-sans font-medium tracking-[0.22em] uppercase hover:border-foreground hover:text-foreground transition-all duration-300 cursor-pointer">
+                View All Categories
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── How It Works ─────────────────────────────────────── */}
+      <section className="py-28 bg-white border-t border-border">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mb-20">
+            <p className="text-[10px] text-muted-foreground/40 font-sans tracking-[0.4em] uppercase mb-4">
+              How It Works
+            </p>
+            <h2 className="text-5xl md:text-6xl font-serif font-light text-foreground">
+              Simple Rental Process
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 border-t border-border">
             {[
-              { label: "Diwali",          bg: "bg-pink-50",   border: "border-pink-200",   hover: "hover:bg-[#E8177A] hover:border-[#E8177A]",  text: "text-pink-700"   },
-              { label: "Independence Day", bg: "bg-blue-50",   border: "border-blue-200",   hover: "hover:bg-[#2563EB] hover:border-[#2563EB]",   text: "text-blue-700"   },
-              { label: "Janmashtami",     bg: "bg-violet-50", border: "border-violet-200", hover: "hover:bg-[#7C3AED] hover:border-[#7C3AED]",   text: "text-violet-700" },
-              { label: "Christmas",       bg: "bg-rose-50",   border: "border-rose-200",   hover: "hover:bg-[#E8177A] hover:border-[#E8177A]",   text: "text-rose-700"   },
-              { label: "School Events",   bg: "bg-indigo-50", border: "border-indigo-200", hover: "hover:bg-[#2563EB] hover:border-[#2563EB]",   text: "text-indigo-700" },
-              { label: "Annual Day",      bg: "bg-fuchsia-50",border: "border-fuchsia-200",hover: "hover:bg-[#7C3AED] hover:border-[#7C3AED]",   text: "text-fuchsia-700"},
-              { label: "Navratri",        bg: "bg-amber-50",  border: "border-amber-200",  hover: "hover:bg-[#E8177A] hover:border-[#E8177A]",   text: "text-amber-700"  },
-              { label: "Cultural Fest",   bg: "bg-purple-50", border: "border-purple-200", hover: "hover:bg-[#7C3AED] hover:border-[#7C3AED]",   text: "text-purple-700" },
-            ].map(({ label, bg, border, hover, text }) => (
+              {
+                num: "01",
+                title: "Browse",
+                desc: "Explore our catalogue and find the perfect costume for your occasion.",
+              },
+              {
+                num: "02",
+                title: "WhatsApp Enquiry",
+                desc: "Click the WhatsApp button on any product to check availability and sizing.",
+              },
+              {
+                num: "03",
+                title: "Rent & Celebrate",
+                desc: "Pick up your clean, pressed costume and make every moment unforgettable.",
+              },
+            ].map(({ num, title, desc }, i) => (
               <div
-                key={label}
-                className={`group border-2 ${border} ${bg} ${hover} rounded-xl px-4 py-5 text-center cursor-default transition-all duration-300 hover:text-white hover:-translate-y-1 hover:shadow-lg`}
+                key={num}
+                className={`p-10 group hover:bg-[#fafafa] transition-colors duration-300 ${
+                  i < 2 ? "md:border-r border-border" : ""
+                }`}
               >
-                <span className={`text-sm font-semibold ${text} group-hover:text-white transition-colors duration-300 leading-tight`}>
-                  {label}
-                </span>
+                <p className="text-6xl font-serif font-light text-muted-foreground/10 mb-8 group-hover:text-primary/15 transition-colors duration-500">
+                  {num}
+                </p>
+                <h3 className="text-2xl md:text-3xl font-serif font-light text-foreground mb-4">
+                  {title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed font-sans">
+                  {desc}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Categories */}
-      <section className="py-24 bg-background">
+      {/* ── Why Choose Us ────────────────────────────────────── */}
+      <section className="py-28 bg-[#09000f]">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-secondary mb-4">Discover Our Collection</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Browse through our wide range of beautifully crafted costumes ready to rent for your next event.
-            </p>
-          </div>
-
-          {isLoading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="rounded-xl bg-muted animate-pulse aspect-[4/3]"></div>
-              ))}
-            </div>
-          ) : error ? (
-            <div className="text-center text-destructive p-8 bg-destructive/10 rounded-xl">
-              Failed to load categories. Please try refreshing.
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {categories?.slice(0, 6).map((category) => (
-                <CategoryCard 
-                  key={category.id} 
-                  name={category.name} 
-                  imageName={category.image_name} 
-                />
-              ))}
-            </div>
-          )}
-          
-          <div className="text-center mt-12">
-            <Button asChild variant="outline" size="lg" className="rounded-full border-primary text-primary hover:bg-primary hover:text-white px-8">
-              <Link href="/catalogue">View All Categories</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* How it Works */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">Easy Rental Process</h2>
-            <p className="text-lg text-muted-foreground">Getting the perfect costume is just a message away.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-            <div className="hidden md:block absolute top-1/2 left-[16.66%] right-[16.66%] h-0.5 bg-border -translate-y-1/2 z-0"></div>
-            
-            <div className="relative z-10 flex flex-col items-center text-center bg-white p-6 rounded-2xl shadow-sm border border-border">
-              <div className="w-20 h-20 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mb-6 shadow-inner">
-                <ShoppingBag className="w-10 h-10" />
-              </div>
-              <h3 className="text-2xl font-serif font-bold mb-3">1. Browse</h3>
-              <p className="text-muted-foreground">Explore our extensive catalogue and find the perfect costume for your occasion.</p>
-            </div>
-
-            <div className="relative z-10 flex flex-col items-center text-center bg-white p-6 rounded-2xl shadow-sm border border-border">
-              <div className="w-20 h-20 rounded-full bg-green-50 text-green-600 flex items-center justify-center mb-6 shadow-inner">
-                <MessageCircle className="w-10 h-10" />
-              </div>
-              <h3 className="text-2xl font-serif font-bold mb-3">2. WhatsApp Enquiry</h3>
-              <p className="text-muted-foreground">Found what you like? Click the WhatsApp button to check availability and sizing.</p>
-            </div>
-
-            <div className="relative z-10 flex flex-col items-center text-center bg-white p-6 rounded-2xl shadow-sm border border-border">
-              <div className="w-20 h-20 rounded-full bg-purple-50 text-secondary flex items-center justify-center mb-6 shadow-inner">
-                <CalendarDays className="w-10 h-10" />
-              </div>
-              <h3 className="text-2xl font-serif font-bold mb-3">3. Rent & Celebrate</h3>
-              <p className="text-muted-foreground">Confirm your booking, pick up your clean, pressed costume, and enjoy the event!</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-24 bg-secondary text-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">Why Families Choose Omyra</h2>
-              <p className="text-white/80 text-lg mb-8 leading-relaxed">
-                We believe that every child deserves to shine on their special day. 
-                Our boutique focuses on providing high-quality, authentic, and hygienic 
-                costumes so you can focus on making memories.
+              <p className="text-primary/60 font-sans text-[11px] tracking-[0.4em] uppercase mb-8">
+                Why Choose Omyra
               </p>
-              
-              <ul className="space-y-4">
+              <h2 className="text-5xl md:text-6xl font-serif font-light text-white mb-10 leading-[1.05]">
+                The boutique
+                <br />
+                <span className="italic text-primary">families trust</span>
+              </h2>
+              <p className="text-white/35 text-base mb-14 leading-relaxed font-light font-sans">
+                Every child deserves to shine on their special day. We offer
+                authentic, hygienic, and beautifully crafted costumes — rented
+                with care.
+              </p>
+              <ul className="space-y-5">
                 {[
                   "Premium Quality Fabrics & Materials",
                   "Professionally Cleaned & Sanitized",
                   "Wide Range of Sizes Available",
                   "Authentic Traditional Designs",
-                  "Friendly Customer Service"
-                ].map((reason, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <CheckCircle2 className="w-6 h-6 text-accent shrink-0" />
-                    <span className="font-medium text-lg">{reason}</span>
+                  "Friendly, Personalised Service",
+                ].map((reason) => (
+                  <li
+                    key={reason}
+                    className="flex items-center gap-5 text-white/55 font-sans text-sm"
+                  >
+                    <span className="w-6 h-px bg-primary shrink-0" />
+                    {reason}
                   </li>
                 ))}
               </ul>
             </div>
-            
-            <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl bg-white/10 flex items-center justify-center border border-white/20">
-              {/* Fallback pattern block if no image is available, using a placeholder concept representing quality */}
-              <div className="text-center p-8">
-                <Heart className="w-24 h-24 text-primary mx-auto mb-6 opacity-80" />
-                <h3 className="text-3xl font-serif font-bold text-accent mb-2">Quality Guaranteed</h3>
-                <p className="text-white/90">Every costume tells a story</p>
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent opacity-50"></div>
+
+            <div className="flex flex-col items-center justify-center min-h-[400px] border border-white/8 p-16 text-center">
+              <div className="w-16 h-px bg-primary/30 mx-auto mb-10" />
+              <h3 className="text-4xl font-serif font-light text-white mb-5">
+                Quality
+                <br />
+                Guaranteed
+              </h3>
+              <div className="w-8 h-px bg-white/15 mx-auto mb-6" />
+              <p className="text-white/25 font-sans text-sm tracking-wider uppercase">
+                Every costume tells a story
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="py-20 bg-white border-t border-border">
+      {/* ── Map ──────────────────────────────────────────────── */}
+      <section className="py-28 bg-white border-t border-border">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary mb-3">Visit Our Store</h2>
-            <p className="text-muted-foreground text-lg">Come in, try on a costume, and find the perfect fit for your celebration.</p>
+          <div className="mb-14">
+            <p className="text-[10px] text-muted-foreground/40 font-sans tracking-[0.4em] uppercase mb-4">
+              Find Us
+            </p>
+            <h2 className="text-5xl md:text-6xl font-serif font-light text-foreground">
+              Visit Our Store
+            </h2>
           </div>
-          <div className="rounded-2xl overflow-hidden border border-border shadow-xl w-full h-[420px]">
+
+          <div className="overflow-hidden border border-border w-full h-[420px]">
             <iframe
               title="Omyra Fancy Dress Store Location"
               src="https://maps.google.com/maps?q=Omyra+Fancy+Dress+%26+School+Uniforms&output=embed&z=15"
@@ -226,41 +279,49 @@ export default function Home() {
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
-          <div className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-4">
+
+          <div className="mt-6">
             <a
               href="https://maps.google.com/?q=Omyra+Fancy+Dress+%26+School+Uniforms"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-full shadow hover:bg-primary/90 transition-all"
+              className="inline-flex items-center gap-3 text-xs font-sans tracking-[0.22em] uppercase text-muted-foreground hover:text-primary transition-colors duration-300"
             >
-              Get Directions
+              <span className="w-8 h-px bg-current" />
+              Open in Google Maps
             </a>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="bg-gradient-to-r from-primary to-secondary rounded-3xl p-10 md:p-16 text-center text-white shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent opacity-20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
-            
-            <div className="relative z-10 max-w-3xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">Ready to find the perfect costume?</h2>
-              <p className="text-xl text-white/90 mb-10">
-                Browse our collection online or reach out directly to check availability for your specific needs.
-              </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Button asChild size="lg" className="bg-white text-primary hover:bg-gray-100 font-bold px-8 rounded-full">
-                  <Link href="/catalogue">Browse Catalogue</Link>
-                </Button>
-                <WhatsAppButton text="Message Us Now" className="px-8 rounded-full border border-white/30" />
-              </div>
-            </div>
+      {/* ── CTA ──────────────────────────────────────────────── */}
+      <section className="py-28 bg-[#09000f] border-t border-white/5">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-primary/60 font-sans text-[11px] tracking-[0.4em] uppercase mb-8">
+            Ready to Celebrate?
+          </p>
+          <h2
+            className="font-serif font-light text-white leading-[1.0] mb-14"
+            style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
+          >
+            Find the perfect
+            <br />
+            <span className="italic text-primary">costume today</span>
+          </h2>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link href="/catalogue">
+              <span className="inline-flex items-center justify-center px-10 py-3.5 border border-white/25 text-white/85 text-xs font-sans font-medium tracking-[0.22em] uppercase hover:bg-white hover:text-foreground transition-all duration-300 cursor-pointer">
+                Browse Catalogue
+              </span>
+            </Link>
+            <WhatsAppButton
+              text="Message Us Now"
+              className="!rounded-none px-10 py-3.5 text-xs tracking-[0.22em] uppercase font-medium h-auto"
+            />
           </div>
         </div>
       </section>
+
     </div>
   );
 }

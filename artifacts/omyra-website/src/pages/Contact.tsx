@@ -20,11 +20,19 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen pt-24 pb-20 bg-background">
-      <div className="bg-secondary text-white py-16 mb-12">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">Get in Touch</h1>
-          <p className="text-lg text-white/80 max-w-2xl mx-auto">
-            We're here to help you find the perfect costume for your event. Reach out to us for availability, sizing, or any other queries.
+      <div className="bg-[#09000f] text-white py-24 mb-16">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 80% 50% at 50% -10%, rgba(232,23,122,0.18) 0%, transparent 60%)" }}
+        />
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <p className="text-primary/60 font-sans text-[11px] tracking-[0.4em] uppercase mb-6">
+            Reach Out
+          </p>
+          <h1 className="text-5xl md:text-7xl font-serif font-light mb-6">Get in Touch</h1>
+          <div className="w-12 h-px bg-white/15 mx-auto mb-6" />
+          <p className="text-white/40 font-sans text-base max-w-xl mx-auto font-light">
+            We're here to help you find the perfect costume. Reach out for availability, sizing, or any queries.
           </p>
         </div>
       </div>

@@ -2,22 +2,21 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { getLogoUrl } from "@/lib/supabase";
-import { Button } from "@/components/ui/button";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [location] = useLocation();
 
+  const isHome = location === "/";
+  const isDark = isHome && !scrolled;
+
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
@@ -30,47 +29,79 @@ export function Navbar() {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-3" : "bg-transparent py-5"}`}>
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        scrolled || !isHome
+          ? "bg-white/95 backdrop-blur-lg border-b border-border py-3 shadow-sm"
+          : "bg-transparent py-5"
+      }`}
+    >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 z-50">
-            <img 
-              src={getLogoUrl()} 
-              alt="Omyra Logo" 
-              className="h-12 w-auto object-contain"
+          <Link href="/" className="flex items-center gap-2.5 z-50">
+            <img
+              src={getLogoUrl()}
+              alt="Omyra Logo"
+              className="h-11 w-auto object-contain transition-all duration-300"
               onError={(e) => {
-                // Fallback text if logo fails to load
-                e.currentTarget.style.display = 'none';
-                e.currentTarget.parentElement?.querySelector('.logo-text')?.classList.remove('hidden');
+                e.currentTarget.style.display = "none";
+                e.currentTarget.parentElement
+                  ?.querySelector(".logo-text")
+                  ?.classList.remove("hidden");
               }}
             />
-            <span className="logo-text hidden font-serif font-bold text-2xl text-primary">Omyra</span>
+            <span
+              className={`logo-text hidden font-serif text-2xl font-light transition-colors ${
+                isDark ? "text-white" : "text-foreground"
+              }`}
+            >
+              Omyra
+            </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <ul className="flex space-x-8">
+          <div className="hidden md:flex items-center gap-10">
+            <ul className="flex gap-8">
               {navLinks.map((link) => (
                 <li key={link.name}>
-                  <Link 
-                    href={link.href} 
-                    className={`font-medium transition-colors hover:text-primary ${
-                      location === link.href ? "text-primary font-semibold" : "text-foreground"
+                  <Link
+                    href={link.href}
+                    className={`font-sans text-sm tracking-wide transition-all duration-300 relative group ${
+                      location === link.href
+                        ? isDark
+                          ? "text-primary"
+                          : "text-primary"
+                        : isDark
+                        ? "text-white/70 hover:text-white"
+                        : "text-foreground/70 hover:text-foreground"
                     }`}
                   >
                     {link.name}
+                    <span
+                      className={`absolute -bottom-0.5 left-0 h-px bg-primary transition-all duration-300 ${
+                        location === link.href ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
+                    />
                   </Link>
                 </li>
               ))}
             </ul>
-            <Button asChild className="bg-primary hover:bg-primary/90 text-white font-semibold rounded-full px-6">
-              <Link href="/catalogue">Explore Rentals</Link>
-            </Button>
+            <Link href="/catalogue">
+              <span
+                className={`inline-flex items-center justify-center px-6 py-2.5 text-xs font-sans font-medium tracking-[0.18em] uppercase transition-all duration-300 cursor-pointer ${
+                  isDark
+                    ? "border border-white/30 text-white hover:bg-white hover:text-foreground"
+                    : "border border-primary text-primary hover:bg-primary hover:text-white"
+                }`}
+              >
+                Explore Rentals
+              </span>
+            </Link>
           </div>
 
-          {/* Mobile Toggle */}
-          <button 
-            className="md:hidden z-50 text-foreground"
+          <button
+            className={`md:hidden z-50 transition-colors ${
+              isDark ? "text-white" : "text-foreground"
+            }`}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -79,23 +110,28 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      <div className={`fixed inset-0 bg-white z-40 transition-transform duration-300 ease-in-out transform ${isOpen ? "translate-x-0" : "translate-x-full"} md:hidden pt-24`}>
-        <div className="container mx-auto px-6 py-8 flex flex-col space-y-6">
+      <div
+        className={`fixed inset-0 bg-white z-40 transition-transform duration-400 ease-in-out transform ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        } md:hidden pt-24`}
+      >
+        <div className="container mx-auto px-6 py-8 flex flex-col space-y-1">
           {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
+            <Link
+              key={link.name}
               href={link.href}
-              className={`text-2xl font-serif border-b border-border pb-4 ${
-                location === link.href ? "text-primary font-bold" : "text-foreground"
+              className={`text-3xl font-serif font-light border-b border-border py-5 ${
+                location === link.href ? "text-primary" : "text-foreground"
               }`}
             >
               {link.name}
             </Link>
           ))}
-          <Button asChild className="mt-8 bg-primary hover:bg-primary/90 text-white font-semibold rounded-full w-full py-6 text-lg">
-            <Link href="/catalogue">Explore Rentals</Link>
-          </Button>
+          <Link href="/catalogue">
+            <span className="inline-flex items-center justify-center mt-10 px-8 py-3.5 bg-primary text-white text-xs font-sans font-medium tracking-[0.2em] uppercase w-full cursor-pointer">
+              Explore Rentals
+            </span>
+          </Link>
         </div>
       </div>
     </nav>
