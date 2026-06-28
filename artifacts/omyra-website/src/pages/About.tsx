@@ -8,7 +8,7 @@ export default function About() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FFF8FC] dark:bg-[#09061A]">
+    <div className="bg-[#FFF8FC] dark:bg-[#09061A]">
 
       {/* Hero */}
       <div className="relative pt-28 pb-20 overflow-hidden bg-gradient-to-br from-white via-[#FFF8FC] to-[#FDF4FF] dark:from-[#09061A] dark:via-[#0F0C1E] dark:to-[#0D0920]">

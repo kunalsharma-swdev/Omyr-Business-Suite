@@ -66,7 +66,7 @@ export default function ProductDetail() {
   const whatsappMessage = `Hi, I am interested in renting ${encodedProductName}. Please share availability and details.`;
 
   return (
-    <div className="min-h-screen pt-24 pb-20 bg-[#FFF8FC] dark:bg-[#09061A]">
+    <div className="pt-24 pb-20 bg-[#FFF8FC] dark:bg-[#09061A]">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
 
         {/* Breadcrumbs */}
