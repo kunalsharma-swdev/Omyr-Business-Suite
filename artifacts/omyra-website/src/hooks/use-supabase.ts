@@ -30,7 +30,7 @@ export function useCategories() {
           const { data: products } = await supabase
             .from('products')
             .select('image_name')
-            .eq('category', cat.name)
+            .ilike('category', cat.name)
             .limit(1);
           
           return {
@@ -54,7 +54,7 @@ export function useProducts(category?: string, page: number = 1, pageSize: numbe
         .select('*', { count: 'exact' });
 
       if (category) {
-        query = query.eq('category', category);
+        query = query.ilike('category', category);
       }
 
       const from = (page - 1) * pageSize;
