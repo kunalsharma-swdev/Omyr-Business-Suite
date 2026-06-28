@@ -20,7 +20,7 @@ export function useCategories() {
     queryKey: ['categories'],
     queryFn: async () => {
       const { data: categories, error: catError } = await supabase
-        .from('product_categories')
+        .from('categories')
         .select('*');
       
       if (catError) throw catError;
