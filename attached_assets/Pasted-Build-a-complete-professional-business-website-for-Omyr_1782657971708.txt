@@ -1,0 +1,643 @@
+Build a complete professional business website for:
+
+Omyra Fancy Dress & School Uniforms
+
+This must be a real dynamic catalogue website, NOT a static mock website.
+
+The website should feel like a professional agency-built business website:
+- Premium UI/UX
+- Festive but clean design
+- Mobile responsive
+- Easy product browsing experience
+- Built for a costume rental business
+
+
+==================================================
+TECH STACK
+==================================================
+
+Frontend:
+React
+
+Backend:
+Supabase
+
+Deployment:
+Netlify ready
+
+Use Supabase client properly.
+
+Do not hardcode products, categories, or images.
+
+
+==================================================
+SUPABASE CONNECTION
+==================================================
+
+Use environment variables:
+
+
+VITE_SUPABASE_URL:
+
+https://blfxmokruyxnwxambrej.supabase.co
+
+
+VITE_SUPABASE_ANON_KEY:
+
+[USE PROVIDED SUPABASE ANON KEY]
+
+
+==================================================
+DATABASE STRUCTURE
+==================================================
+
+
+Table:
+
+product_categories
+
+
+Columns:
+
+id
+name
+
+
+
+------------------------------
+
+
+Table:
+
+products
+
+
+Columns:
+
+id
+product_name
+description
+category
+image_name
+
+
+
+IMPORTANT DATA RELATIONSHIP:
+
+
+Every product is associated with:
+
+1. A category
+
+using:
+
+products.category
+
+
+2. An image
+
+using:
+
+products.image_name
+
+
+
+The category determines where the product appears.
+
+The image_name determines which image belongs to that specific product.
+
+
+
+Example:
+
+Product:
+
+Spiderman Costume
+
+
+Database:
+
+product_name:
+Spiderman Costume
+
+
+category:
+Fancy Dress
+
+
+image_name:
+spiderman.jpg
+
+
+
+The website must display the correct image for that exact product.
+
+
+
+==================================================
+IMAGE HANDLING
+==================================================
+
+
+Product images are stored in Supabase Storage.
+
+
+Bucket name:
+
+products
+
+
+
+All product images must be fetched dynamically from this bucket.
+
+
+Use:
+
+supabase.storage.from('products').getPublicUrl(product.image_name)
+
+
+
+Never use:
+
+- local image folders
+- imported images
+- placeholder images
+- hardcoded image paths
+
+
+
+The image_name value in the products table is the exact filename stored inside the products storage bucket.
+
+
+
+Logo:
+
+Bucket:
+
+assets
+
+
+File:
+
+logo.png
+
+
+Load the logo dynamically from Supabase Storage.
+
+
+
+==================================================
+DYNAMIC DATABASE BEHAVIOUR
+==================================================
+
+
+Never hardcode:
+
+- categories
+- products
+- images
+
+
+The website must:
+
+Fetch categories from:
+
+product_categories
+
+
+Fetch products from:
+
+products
+
+
+
+If a new category is added in Supabase:
+
+It automatically appears in the catalogue.
+
+
+
+If new products are added:
+
+They automatically appear under the correct category.
+
+
+
+No code changes should be required.
+
+
+
+==================================================
+WEBSITE PAGES
+==================================================
+
+
+Create:
+
+
+1. HOME PAGE
+
+
+Create a complete professional landing page.
+
+
+Hero section:
+
+Use logo.
+
+
+Headline:
+
+Make Every Celebration Special
+
+
+Mention:
+
+Fancy dress costumes, school events, celebrations, and rental services.
+
+
+
+Clearly mention:
+
+"All products are available for rent only."
+
+
+
+Buttons:
+
+Explore Catalogue
+
+Contact on WhatsApp
+
+
+
+Hero gradient:
+
+#E8177A → #7C3AED → #2563EB
+
+
+White text.
+
+
+
+Add sections:
+
+
+Featured Categories:
+
+
+Fetch dynamically from Supabase.
+
+
+
+Category cards:
+
+The category card image must be generated automatically.
+
+Logic:
+
+Find the first product belonging to that category.
+
+Use that product's image_name from Supabase Storage.
+
+
+
+Do not manually assign category images.
+
+
+
+Add:
+
+
+Why Choose Us section
+
+
+Rental process:
+
+Browse
+→
+Choose Product
+→
+WhatsApp Enquiry
+→
+Rent
+
+
+
+Occasion section:
+
+Include themes like:
+
+Diwali
+Independence Day
+Janmashtami
+Christmas
+School Events
+
+
+
+Add:
+
+Call to action section
+
+
+At bottom:
+
+Contact section
+
+
+
+Footer.
+
+
+
+==================================================
+2. CATALOGUE PAGE
+==================================================
+
+
+Flow:
+
+
+Catalogue
+
+↓
+
+Categories
+
+↓
+
+Select Category
+
+↓
+
+Products
+
+
+
+Show all categories dynamically.
+
+
+==================================================
+3. CATEGORY PRODUCT PAGE
+==================================================
+
+
+Example:
+
+/catalogue/diwali
+
+
+Show:
+
+Category title
+
+Products belonging to that category
+
+
+
+Filter:
+
+products.category = selected category
+
+
+
+Product cards:
+
+Show:
+
+- Image
+- Product name
+- Short description
+
+
+
+Pagination:
+
+Exactly:
+
+25 products per page
+
+
+
+==================================================
+4. PRODUCT DETAIL PAGE
+==================================================
+
+
+Clicking any product card opens a dedicated product page.
+
+
+
+Show:
+
+Large image
+
+Product name
+
+Description
+
+Category
+
+
+
+Add message:
+
+
+"This product is available for rent only. Contact us on WhatsApp for availability and booking."
+
+
+
+Add WhatsApp enquiry button.
+
+
+
+==================================================
+WHATSAPP ENQUIRY
+==================================================
+
+
+Use official WhatsApp link format.
+
+
+
+Button redirects to WhatsApp chat.
+
+
+
+Pre-filled message:
+
+
+Hi, I am interested in renting [PRODUCT NAME]. Please share availability and details.
+
+
+
+Business number:
+
++91 81975 47412
+
+
+
+==================================================
+5. ABOUT PAGE
+==================================================
+
+
+Create a professional About page.
+
+Focus on:
+
+- Rental costumes
+- School functions
+- Cultural events
+- Celebrations
+- Easy rental experience
+
+
+
+==================================================
+6. CONTACT PAGE
+==================================================
+
+
+Include:
+
+
+Phone:
+
++91 81975 47412
+
+
+
+Instagram:
+
+omyra_fancydress_boutique
+
+
+
+Google Maps iframe:
+
+
+[INSERT PROVIDED GOOGLE MAPS EMBED CODE HERE]
+
+
+
+Add:
+
+Get Directions button using the same location.
+
+
+
+==================================================
+DESIGN SYSTEM
+==================================================
+
+
+Use:
+
+
+Primary Pink:
+
+#E8177A
+
+
+Royal Purple:
+
+#7C3AED
+
+
+Royal Blue:
+
+#2563EB
+
+
+Golden Yellow:
+
+#FBBF24
+
+
+Background:
+
+#FFF8FC
+
+
+Card:
+
+#FFFFFF
+
+
+Main text:
+
+#1F2937
+
+
+Secondary text:
+
+#6B7280
+
+
+Border:
+
+#E5E7EB
+
+
+
+Style:
+
+Festive
+
+Professional
+
+Premium
+
+Clean
+
+
+
+Usage:
+
+Pink:
+buttons, highlights
+
+
+Purple:
+hero, headings
+
+
+Blue:
+links, secondary actions
+
+
+Gold:
+small accents
+
+
+
+==================================================
+FINAL REQUIREMENTS
+==================================================
+
+
+Include:
+
+- Responsive mobile-first design
+- Smooth animations
+- Loading states
+- Error states
+- Empty states
+- SEO structure
+- Professional navigation
+- Professional footer
+
+
+Do NOT create:
+
+- Cart
+- Checkout
+- Login
+- Admin panel
+- Fake products
+- Static categories
+
+
+Build this as a complete production-ready rental catalogue website powered by Supabase.
