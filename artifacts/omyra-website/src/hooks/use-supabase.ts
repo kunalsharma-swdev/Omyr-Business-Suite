@@ -14,6 +14,13 @@ export interface Product {
   image_name: string;
 }
 
+export interface ProductImage {
+  id: number;
+  product_name: string;
+  image_name: string;
+  display_order: number;
+}
+
 export function useCategories() {
   return useQuery({
     queryKey: ['categories'],
@@ -70,6 +77,22 @@ export function useProducts(category?: string, page: number = 1, pageSize: numbe
         totalPages: Math.ceil((count || 0) / pageSize)
       };
     }
+  });
+}
+
+export function useProductImages(productName: string) {
+  return useQuery({
+    queryKey: ['product-images', productName],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('product_images')
+        .select('*')
+        .eq('product_name', productName)
+        .order('display_order', { ascending: true });
+      if (error) throw error;
+      return (data || []) as ProductImage[];
+    },
+    enabled: !!productName,
   });
 }
 

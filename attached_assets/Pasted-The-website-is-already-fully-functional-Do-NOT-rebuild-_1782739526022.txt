@@ -1,0 +1,163 @@
+The website is already fully functional. Do NOT rebuild it.
+
+Your task is to add support for MULTIPLE PRODUCT IMAGES while preserving every existing feature.
+
+========================
+CRITICAL REQUIREMENTS
+========================
+
+Do NOT modify or break:
+
+- Supabase connection
+- Existing database queries
+- Routing
+- Homepage
+- Catalogue page
+- Category pages
+- Pagination
+- WhatsApp enquiry
+- Dynamic categories
+- Product cards
+- Product detail routing
+
+Only extend the existing product detail page.
+
+========================
+DATABASE STRUCTURE
+========================
+
+Current tables:
+
+product_categories
+- name
+
+products
+- product_name
+- description
+- category
+- image_name
+
+New table:
+
+product_images
+- id
+- product_name
+- image_name
+- display_order
+
+The product_images.product_name corresponds exactly to products.product_name.
+
+All images are stored inside the existing "products" Supabase Storage bucket.
+
+========================
+REQUIRED FUNCTIONALITY
+========================
+
+Continue using products.image_name exactly as before.
+
+This remains the COVER IMAGE.
+
+Nothing on the homepage, catalogue page or product cards should change.
+
+Only the Product Detail Page should support multiple images.
+
+When a user opens a product page:
+
+1. Fetch the product normally from the products table.
+
+2. Fetch every matching row from product_images where:
+
+product_images.product_name == products.product_name
+
+3. Order the results by display_order ascending.
+
+4. Build the image URLs from the existing Supabase Storage bucket.
+
+5. Display every image.
+
+========================
+GALLERY DESIGN
+========================
+
+Create a premium e-commerce image gallery.
+
+Desktop:
+
+- Large main image
+- Thumbnail strip underneath
+- Clicking a thumbnail changes the main image
+- Active thumbnail has a highlighted border
+- Smooth fade transition
+- Image keeps aspect ratio
+- Images load lazily
+
+Mobile:
+
+- Swipeable image gallery
+- Horizontal thumbnail strip
+- Touch friendly
+
+========================
+FALLBACK LOGIC
+========================
+
+If there are NO rows inside product_images for a product:
+
+Use products.image_name only.
+
+The page should continue working exactly as it does today.
+
+Never show an empty gallery.
+
+========================
+PERFORMANCE
+========================
+
+Do not fetch unnecessary data.
+
+Only query product_images for the currently opened product.
+
+Do not fetch images for every product.
+
+========================
+BACKWARDS COMPATIBILITY
+========================
+
+Existing products with only one image must continue working without any changes.
+
+Products that have multiple images should automatically display the gallery.
+
+========================
+DO NOT CHANGE
+========================
+
+Do not modify:
+
+- Homepage
+- Category Cards
+- Featured Categories
+- Product Cards
+- Dynamic Categories
+- Pagination
+- WhatsApp Logic
+- Database Schema
+- Storage Bucket
+- Existing Cover Image Logic
+
+========================
+FINAL RESULT
+========================
+
+Homepage:
+Still displays the cover image.
+
+Category page:
+Still displays the cover image.
+
+Product cards:
+Still display the cover image.
+
+Product Detail Page:
+Displays a professional multi-image gallery using images from the product_images table while falling back to the original cover image if no additional images exist.
+
+Maintain the current design language and ensure the new gallery feels polished, modern, and responsive.

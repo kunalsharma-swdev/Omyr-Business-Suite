@@ -1,23 +1,30 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link } from "wouter";
-import { useProduct } from "@/hooks/use-supabase";
+import { useProduct, useProductImages } from "@/hooks/use-supabase";
 import { getProductImageUrl } from "@/lib/supabase";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ShareWhatsAppButton } from "@/components/ShareWhatsAppButton";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ChevronRight, Home, AlertCircle, Tag, Sparkles } from "lucide-react";
+import { ChevronRight, ChevronLeft, Home, AlertCircle, Tag, Sparkles } from "lucide-react";
 import { SiInstagram } from "react-icons/si";
 
 export default function ProductDetail() {
   const params = useParams<{ name: string }>();
   const productName = params.name ? decodeURIComponent(params.name) : "";
   const { data: product, isLoading, error } = useProduct(productName);
+  const { data: productImages } = useProductImages(productName);
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   useEffect(() => {
     if (product) {
       document.title = `${product.product_name} | Omyra Fancy Dress`;
     }
   }, [product]);
+
+  // Reset active index when product changes
+  useEffect(() => { setActiveIndex(0); }, [productName]);
 
   function formatName(name: string) {
     return name.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
@@ -65,6 +72,28 @@ export default function ProductDetail() {
   const encodedProductName = encodeURIComponent(product.product_name);
   const whatsappMessage = `Hi, I am interested in renting ${encodedProductName}. Please share availability and details.`;
 
+  // Build gallery: use product_images if available, else fall back to cover image
+  const galleryImages: string[] =
+    productImages && productImages.length > 0
+      ? productImages.map((img) => img.image_name)
+      : product.image_name
+      ? [product.image_name]
+      : [];
+
+  const hasMultiple = galleryImages.length > 1;
+
+  const goPrev = () => setActiveIndex((i) => Math.max(0, i - 1));
+  const goNext = () => setActiveIndex((i) => Math.min(galleryImages.length - 1, i + 1));
+
+  const handleTouchStart = (e: React.TouchEvent) => setTouchStartX(e.touches[0].clientX);
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (diff > 50) goNext();
+    else if (diff < -50) goPrev();
+    setTouchStartX(null);
+  };
+
   return (
     <div className="pt-24 pb-20 bg-[#FFF8FC] dark:bg-[#09061A]">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
@@ -87,32 +116,114 @@ export default function ProductDetail() {
         <div className="bg-white dark:bg-[#0F0C1E] rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_40px_rgba(0,0,0,0.5)] border border-[#E5E7EB]/60 dark:border-[#23203A]/80 overflow-hidden">
           <div className="flex flex-col lg:flex-row">
 
-            {/* Image */}
-            <div className="w-full lg:w-[48%] relative bg-gradient-to-br from-[#FFF8FC] dark:from-[#16112A] to-[#F3E8FF] dark:to-[#0F0C1E] flex items-center justify-center min-h-[400px] lg:min-h-[600px]">
-              {product.image_name ? (
-                <img
-                  src={getProductImageUrl(product.image_name)}
-                  alt={product.product_name}
-                  className="w-full h-full object-cover animate-in fade-in duration-700"
-                  style={{ maxHeight: "640px" }}
-                />
-              ) : (
-                <div className="flex flex-col items-center gap-3 text-[#6B7280] dark:text-[#8B8499]">
-                  <Sparkles className="w-10 h-10 text-[#E5E7EB] dark:text-[#23203A]" />
-                  <span className="font-sans text-sm">No image available</span>
+            {/* ── Image Gallery ── */}
+            <div className="w-full lg:w-[48%] flex flex-col bg-gradient-to-br from-[#FFF8FC] dark:from-[#16112A] to-[#F3E8FF] dark:to-[#0F0C1E]">
+
+              {/* Main image */}
+              <div
+                className="relative flex items-center justify-center min-h-[380px] lg:min-h-[520px] overflow-hidden select-none"
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+              >
+                {galleryImages.length > 0 ? (
+                  <img
+                    key={activeIndex}
+                    src={getProductImageUrl(galleryImages[activeIndex])}
+                    alt={`${formatName(product.product_name)} — image ${activeIndex + 1}`}
+                    className="w-full h-full object-cover animate-in fade-in duration-300"
+                    style={{ maxHeight: "560px" }}
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="flex flex-col items-center gap-3 text-[#6B7280] dark:text-[#8B8499] py-20">
+                    <Sparkles className="w-10 h-10 text-[#E5E7EB] dark:text-[#23203A]" />
+                    <span className="font-sans text-sm">No image available</span>
+                  </div>
+                )}
+
+                {/* Prev / Next arrows — only when multiple images */}
+                {hasMultiple && (
+                  <>
+                    <button
+                      onClick={goPrev}
+                      disabled={activeIndex === 0}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 dark:bg-[#0F0C1E]/90 backdrop-blur-sm shadow-md flex items-center justify-center text-[#1F2937] dark:text-[#F1F0F5] hover:bg-white dark:hover:bg-[#16112A] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+                      aria-label="Previous image"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={goNext}
+                      disabled={activeIndex === galleryImages.length - 1}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 dark:bg-[#0F0C1E]/90 backdrop-blur-sm shadow-md flex items-center justify-center text-[#1F2937] dark:text-[#F1F0F5] hover:bg-white dark:hover:bg-[#16112A] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+                      aria-label="Next image"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </>
+                )}
+
+                {/* Dot indicators — mobile only, multiple images */}
+                {hasMultiple && (
+                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 lg:hidden">
+                    {galleryImages.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setActiveIndex(i)}
+                        className={`h-1.5 rounded-full transition-all duration-200 ${i === activeIndex ? "w-5 bg-white shadow" : "w-1.5 bg-white/50"}`}
+                        aria-label={`Go to image ${i + 1}`}
+                      />
+                    ))}
+                  </div>
+                )}
+
+                {/* Badges */}
+                <div className="absolute top-4 left-4">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/95 dark:bg-[#0F0C1E]/95 backdrop-blur-sm text-[#E8177A] font-sans text-[10px] font-bold tracking-[0.18em] uppercase rounded-full shadow-sm">
+                    <Tag className="w-3 h-3" />
+                    {formatName(product.category)}
+                  </span>
+                </div>
+                <div className="absolute top-4 right-4">
+                  <span className="inline-block px-3 py-1.5 bg-[#E8177A] text-white font-sans text-[10px] font-bold tracking-[0.15em] uppercase rounded-full shadow-sm">
+                    For Rent
+                  </span>
+                </div>
+
+                {/* Image counter badge — multiple images */}
+                {hasMultiple && (
+                  <div className="absolute bottom-3 right-3 hidden lg:block">
+                    <span className="px-2.5 py-1 bg-black/40 backdrop-blur-sm text-white font-sans text-[11px] rounded-full">
+                      {activeIndex + 1} / {galleryImages.length}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* Thumbnail strip — only when multiple images */}
+              {hasMultiple && (
+                <div className="flex gap-2 p-3 overflow-x-auto bg-white/60 dark:bg-[#0F0C1E]/60 border-t border-[#E5E7EB]/60 dark:border-[#23203A]/60 scrollbar-thin">
+                  {galleryImages.map((img, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActiveIndex(i)}
+                      className={`shrink-0 w-16 h-16 rounded-xl overflow-hidden border-2 transition-all duration-200 ${
+                        i === activeIndex
+                          ? "border-[#E8177A] shadow-[0_0_0_2px_rgba(232,23,122,0.2)]"
+                          : "border-transparent opacity-50 hover:opacity-80 hover:border-[#E5E7EB] dark:hover:border-[#23203A]"
+                      }`}
+                      aria-label={`View image ${i + 1}`}
+                    >
+                      <img
+                        src={getProductImageUrl(img)}
+                        alt={`Thumbnail ${i + 1}`}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </button>
+                  ))}
                 </div>
               )}
-              <div className="absolute top-4 left-4">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/95 dark:bg-[#0F0C1E]/95 backdrop-blur-sm text-[#E8177A] font-sans text-[10px] font-bold tracking-[0.18em] uppercase rounded-full shadow-sm">
-                  <Tag className="w-3 h-3" />
-                  {formatName(product.category)}
-                </span>
-              </div>
-              <div className="absolute top-4 right-4">
-                <span className="inline-block px-3 py-1.5 bg-[#E8177A] text-white font-sans text-[10px] font-bold tracking-[0.15em] uppercase rounded-full shadow-sm">
-                  For Rent
-                </span>
-              </div>
             </div>
 
             {/* Content */}
