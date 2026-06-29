@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { ShareWhatsAppButton } from "@/components/ShareWhatsAppButton";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ChevronLeft, ChevronRight, ArrowLeft, ShoppingBag } from "lucide-react";
+import { SiInstagram } from "react-icons/si";
 
 export default function CategoryProducts() {
   const params = useParams<{ category: string }>();
@@ -64,6 +65,14 @@ export default function CategoryProducts() {
                 subtitle="category"
                 variant="pill"
               />
+              <a
+                href="https://ig.me/m/omyra_fancydress_boutique"
+                target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#E1306C]/50 dark:border-[#E1306C]/40 text-[#E1306C] font-sans text-sm font-medium hover:bg-[#E1306C] hover:text-white hover:border-[#E1306C] transition-all duration-200"
+              >
+                <SiInstagram className="w-4 h-4" />
+                Enquire on Instagram
+              </a>
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { useCategories } from "@/hooks/use-supabase";
 import { CategoryCard } from "@/components/CategoryCard";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Search, X, ChevronRight, Sparkles, ShieldCheck, Star, Smile, LayoutGrid } from "lucide-react";
-import { SiWhatsapp } from "react-icons/si";
+import { SiWhatsapp, SiInstagram } from "react-icons/si";
 
 function formatName(name: string) {
   return name.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
@@ -183,6 +183,14 @@ export default function Home() {
                   <SiWhatsapp className="w-4 h-4 text-[#25D366]" />
                   WhatsApp Enquiry
                 </a>
+                <a
+                  href="https://ig.me/m/omyra_fancydress_boutique"
+                  target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-white/70 dark:bg-[#16112A] border border-[#F0DCF0] dark:border-[#23203A] text-[#1F2937] dark:text-[#F1F0F5] font-sans font-semibold text-sm hover:border-[#E1306C] hover:text-[#E1306C] hover:shadow-[0_4px_16px_rgba(225,48,108,0.2)] transition-all duration-200 shadow-[0_2px_8px_rgba(232,23,122,0.08)]"
+                >
+                  <SiInstagram className="w-4 h-4 text-[#E1306C]" />
+                  Instagram Enquiry
+                </a>
               </div>
               <p className="animate-in fade-in duration-700 delay-400">
                 <span className="inline-flex items-center gap-2 text-[#9CA3AF] dark:text-[#6B6480] font-sans text-xs tracking-wider">
@@ -355,6 +363,14 @@ export default function Home() {
                 className="!rounded-full px-8 py-3.5 text-sm font-semibold h-auto border-2 border-white/30 bg-white/10 hover:bg-white/20 text-white"
                 variant="ghost"
               />
+              <a
+                href="https://ig.me/m/omyra_fancydress_boutique"
+                target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border-2 border-white/30 bg-white/10 hover:bg-white/20 text-white font-sans font-semibold text-sm transition-all duration-200"
+              >
+                <SiInstagram className="w-4 h-4" />
+                Instagram DM
+              </a>
             </div>
           </div>
         </section>

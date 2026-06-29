@@ -107,7 +107,7 @@ export function Footer() {
                   Visit our boutique for the best rental experience.
                 </span>
               </li>
-              <li>
+              <li className="flex flex-col gap-2">
                 <a
                   href="https://wa.me/918197547412"
                   target="_blank"
@@ -116,6 +116,15 @@ export function Footer() {
                 >
                   <SiWhatsapp className="w-3.5 h-3.5" />
                   WhatsApp Us
+                </a>
+                <a
+                  href="https://ig.me/m/omyra_fancydress_boutique"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-[#E1306C]/40 text-[#E1306C]/80 text-xs font-sans font-medium hover:bg-[#E1306C] hover:text-white hover:border-[#E1306C] transition-all duration-200"
+                >
+                  <Instagram className="w-3.5 h-3.5" />
+                  Instagram DM
                 </a>
               </li>
             </ul>
