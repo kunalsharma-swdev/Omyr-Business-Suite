@@ -129,16 +129,38 @@ export default function ProductDetail() {
               )}
 
               {/* Rental notice */}
-              <div className="bg-gradient-to-r from-[#FFF8FC] dark:from-[#16112A] to-[#F3E8FF] dark:to-[#0F0C1E] border border-[#E8177A]/15 dark:border-[#E8177A]/20 rounded-2xl p-5 mb-8">
+              <div className="bg-gradient-to-r from-[#FFF8FC] dark:from-[#16112A] to-[#F3E8FF] dark:to-[#0F0C1E] border border-[#E8177A]/15 dark:border-[#E8177A]/20 rounded-2xl p-5 mb-5">
                 <div className="flex items-start gap-3">
                   <div className="w-8 h-8 rounded-full bg-[#E8177A]/15 flex items-center justify-center shrink-0 mt-0.5">
                     <Sparkles className="w-4 h-4 text-[#E8177A]" />
                   </div>
                   <div>
-                    <h4 className="font-sans font-semibold text-[#1F2937] dark:text-[#F1F0F5] text-sm mb-1">Available for Rental</h4>
+                    <h4 className="font-sans font-semibold text-[#1F2937] dark:text-[#F1F0F5] text-sm mb-1">Available for Rental · 24-Hour Period</h4>
                     <p className="text-[#6B7280] dark:text-[#8B8499] text-sm leading-relaxed">
-                      This costume is available for rent only. Reach out on WhatsApp or Instagram for availability, pricing, and booking details.
+                      This costume is available for rent only. The rental period is <span className="font-medium text-[#1F2937] dark:text-[#F1F0F5]">24 hours</span> — the costume must be returned the next day. Reach out on WhatsApp or Instagram for pricing and to book your dates.
                     </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Delivery options */}
+              <div className="flex gap-3 mb-5">
+                <div className="flex-1 flex items-center gap-2.5 p-3.5 bg-[#FFF8FC] dark:bg-[#16112A] rounded-xl border border-[#E5E7EB]/80 dark:border-[#23203A]/80">
+                  <div className="w-7 h-7 rounded-full bg-[#7C3AED]/10 flex items-center justify-center shrink-0">
+                    <svg className="w-3.5 h-3.5 text-[#7C3AED]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                  </div>
+                  <div>
+                    <p className="text-[#1F2937] dark:text-[#F1F0F5] font-sans text-xs font-semibold">Store Pickup</p>
+                    <p className="text-[#9CA3AF] dark:text-[#6B6480] font-sans text-[11px]">Collect from our boutique</p>
+                  </div>
+                </div>
+                <div className="flex-1 flex items-center gap-2.5 p-3.5 bg-[#FFF8FC] dark:bg-[#16112A] rounded-xl border border-[#E5E7EB]/80 dark:border-[#23203A]/80">
+                  <div className="w-7 h-7 rounded-full bg-[#E8177A]/10 flex items-center justify-center shrink-0">
+                    <svg className="w-3.5 h-3.5 text-[#E8177A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8l1 12a2 2 0 002 2h8a2 2 0 002-2L19 8M10 12v4M14 12v4" /></svg>
+                  </div>
+                  <div>
+                    <p className="text-[#1F2937] dark:text-[#F1F0F5] font-sans text-xs font-semibold">Home Delivery</p>
+                    <p className="text-[#9CA3AF] dark:text-[#6B6480] font-sans text-[11px]">Delivered to your door</p>
                   </div>
                 </div>
               </div>

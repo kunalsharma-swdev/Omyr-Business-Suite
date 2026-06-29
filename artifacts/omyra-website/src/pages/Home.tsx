@@ -192,12 +192,16 @@ export default function Home() {
                   Instagram Enquiry
                 </a>
               </div>
-              <p className="animate-in fade-in duration-700 delay-400">
+              <div className="animate-in fade-in duration-700 delay-400 flex flex-col gap-1.5">
                 <span className="inline-flex items-center gap-2 text-[#9CA3AF] dark:text-[#6B6480] font-sans text-xs tracking-wider">
                   <span className="w-4 h-px bg-[#E8177A]/40" />
-                  All products available for rent only
+                  All products available for rent only · 24-hour rental period
                 </span>
-              </p>
+                <span className="inline-flex items-center gap-2 text-[#9CA3AF] dark:text-[#6B6480] font-sans text-xs tracking-wider">
+                  <span className="w-4 h-px bg-[#7C3AED]/40" />
+                  Store pickup or home delivery available
+                </span>
+              </div>
             </div>
           </div>
 
