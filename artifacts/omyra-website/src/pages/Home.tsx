@@ -134,8 +134,8 @@ export default function Home() {
       {/* ── Main Content ── */}
       <main className="flex-1 overflow-hidden">
 
-        {/* Mobile category trigger */}
-        <div className="lg:hidden sticky top-16 z-30 bg-[#FFF8FC] dark:bg-[#0F0C1E] border-b border-[#F0DCF0] dark:border-[#23203A] px-4 py-2.5 flex items-center gap-3 shadow-sm">
+        {/* Mobile category trigger — fixed below navbar */}
+        <div className="lg:hidden fixed top-16 left-0 right-0 z-30 bg-[#FFF8FC] dark:bg-[#0F0C1E] border-b border-[#F0DCF0] dark:border-[#23203A] px-4 py-2.5 flex items-center gap-3 shadow-sm">
           <button
             onClick={() => setDrawerOpen(true)}
             className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#E8177A]/30 text-[#E8177A] font-sans text-xs font-semibold hover:bg-[#FFF8FC] dark:hover:bg-[#16112A] transition-colors"
@@ -145,6 +145,8 @@ export default function Home() {
           </button>
           <span className="text-[#6B7280] dark:text-[#8B8499] font-sans text-xs">or scroll to explore</span>
         </div>
+        {/* Spacer to push content below the fixed trigger bar on mobile */}
+        <div className="lg:hidden h-[46px]" />
 
         {/* ── Hero ── */}
         <section className="relative overflow-hidden bg-gradient-to-br from-white via-[#FFF8FC] to-[#FDF4FF] dark:from-[#09061A] dark:via-[#0F0C1E] dark:to-[#0D0920] pt-20 lg:pt-28 pb-20">
