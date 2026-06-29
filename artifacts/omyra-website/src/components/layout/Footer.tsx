@@ -135,6 +135,17 @@ export function Footer() {
           <p className="text-white/25 text-xs font-sans">
             &copy; {currentYear} Omyra Fancy Dress & School Uniforms. All rights reserved.
           </p>
+          <p className="text-white/25 text-xs font-sans">
+            Created by{" "}
+            <a
+              href="https://erkunalsharma.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/40 hover:text-white transition-colors duration-200 underline underline-offset-2"
+            >
+              Erkunal Sharma
+            </a>
+          </p>
           <p className="text-white/20 text-xs font-sans tracking-wider">
             All products available for rent only.
           </p>
